@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="925.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interface_chu.FXMLDocumentController">
+   <children>
+      <ScrollPane prefHeight="925.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane prefHeight="924.0" prefWidth="938.0">
+               <children>
+                  <TabPane layoutX="1.0" layoutY="139.0" prefHeight="675.0" prefWidth="938.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">
+                     <tabs>
+                        <Tab text="Général">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="617.0" prefWidth="938.0">
+                                 <children>
+                                    <Text layoutX="19.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Forward" wrappingWidth="107.947265625" />
+                                    <Text layoutX="19.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Reverse" />
+                                    <TextField layoutX="150.0" layoutY="206.0" prefHeight="25.0" prefWidth="551.0" text="CAGCMGCCGCGGTAATWC" />
+                                    <TextField layoutX="150.0" layoutY="236.0" prefHeight="25.0" prefWidth="552.0" text="CTGAGCCAKGATCAAACTCT" />
+                                    <Text layoutX="19.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front Forward" wrappingWidth="107.947265625" />
+                                    <Text layoutX="19.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front Reverse" />
+                                    <TextField layoutX="150.0" layoutY="271.0" prefHeight="25.0" prefWidth="551.0" text="CAGCMGCCGCGGTAATWC" />
+                                    <TextField layoutX="150.0" layoutY="303.0" prefHeight="25.0" prefWidth="552.0" text="CTGAGCCAKGATCAAACTCT" />
+                                    <ScrollPane layoutX="150.0" layoutY="35.0" prefHeight="119.0" prefWidth="764.0" AnchorPane.bottomAnchor="461.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="35.0">
+                                      <content>
+                                          <Text layoutX="38.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fichiers" />
+                                          <Label fx:id="nomfichiers" layoutX="135.0" layoutY="55.0" />
+                                      </content>
+                                   </ScrollPane>
+                                    <Button fx:id="fichier" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Ajouter un fichier" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Modules">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="483.0" prefWidth="894.0">
+                                 <children>
+                                    <CheckBox fx:id="rarefy" layoutX="45.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleClickRarefy" text="Rarefy" />
+                                    <CheckBox fx:id="phylogeny_iqtre" layoutX="46.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleClickIQTree" text="Phylogeny_iqtre" />
+                                    <CheckBox fx:id="diversity_alpha" layoutX="46.0" layoutY="78.0" mnemonicParsing="false" text="Diversity_alpha" />
+                                    <CheckBox fx:id="alpha_group_significance" layoutX="46.0" layoutY="108.0" mnemonicParsing="false" onAction="#handleClickAlphaGroup" text="Alpha_group_significance" />
+                                    <CheckBox fx:id="diversity_beta" layoutX="47.0" layoutY="137.0" mnemonicParsing="false" text="Diversity_beta" />
+                                    <CheckBox fx:id="beta_group_significance" layoutX="47.0" layoutY="168.0" mnemonicParsing="false" text="Beta_group_significance" />
+                                    <AnchorPane fx:id="paneDetails" layoutX="52.0" layoutY="270.0" prefHeight="327.0" prefWidth="834.0" visible="false">
+                                       <children>
+                                          <Text fx:id="nomModule" layoutX="391.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODULE" />
+                                          <Button fx:id="valid" layoutX="383.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleClickSave" text="VALIDER" />
+                                          <TextField fx:id="le1" layoutX="37.0" layoutY="87.0" prefHeight="26.0" prefWidth="190.0" visible="false" />
+                                          <TextField fx:id="le3" layoutX="37.0" layoutY="151.0" prefHeight="26.0" prefWidth="191.0" visible="false" />
+                                          <TextField fx:id="le5" layoutX="299.0" layoutY="123.0" prefHeight="26.0" prefWidth="232.0" visible="false" />
+                                          <TextField fx:id="le2" layoutX="580.0" layoutY="87.0" prefHeight="26.0" prefWidth="232.0" visible="false" />
+                                          <TextField fx:id="le4" layoutX="580.0" layoutY="151.0" prefHeight="26.0" prefWidth="236.0" visible="false" />
+                                          <Text fx:id="para1" layoutX="37.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 1" visible="false" />
+                                          <Text fx:id="para3" layoutX="33.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 3" visible="false" />
+                                          <Text fx:id="para5" layoutX="300.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 5" visible="false" />
+                                          <Text fx:id="para2" layoutX="580.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 2" visible="false" />
+                                          <Text fx:id="para4" layoutX="580.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 4" visible="false" />
+                                          <Button fx:id="button5" layoutX="392.0" layoutY="93.0" mnemonicParsing="false" onAction="#handleBoutonDirectory" text="Fichier" visible="false" />
+                                          <Label fx:id="label5" layoutX="305.0" layoutY="134.0" text="          " visible="false" />
+                                          <Button fx:id="button1" layoutX="116.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleBoutonDirectory" text="Fichier" visible="false" />
+                                          <Button fx:id="button3" layoutX="115.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleBoutonDirectory" text="Fichier" visible="false" />
+                                          <Button fx:id="button2" layoutX="660.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleBoutonDirectory" text="Fichier" visible="false" />
+                                          <Button fx:id="button4" layoutX="660.0" layoutY="122.0" mnemonicParsing="false" onAction="#handleBoutonDirectory" text="Fichier" visible="false" />
+                                          <Label fx:id="label1" layoutX="34.0" layoutY="94.0" text="          " visible="false" />
+                                          <Label fx:id="label3" layoutX="37.0" layoutY="158.0" text="          " visible="false" />
+                                          <Label fx:id="label2" layoutX="583.0" layoutY="95.0" text="          " visible="false" />
+                                          <Label fx:id="label4" layoutX="580.0" layoutY="159.0" text="          " visible="false" />
+                                       </children>
+                                    </AnchorPane>
+                                    <CheckBox fx:id="emperor_plot" layoutX="47.0" layoutY="198.0" mnemonicParsing="false" text="Emperor_plot" />
+                                    <CheckBox fx:id="alpha_rarefaction" layoutX="47.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleClickAlphaRarefaction" text="Alpha_rarefaction" />
+                                    <CheckBox fx:id="classify_sklearn" layoutX="323.0" layoutY="30.0" mnemonicParsing="false" text="Classify_sklearn" />
+                                    <CheckBox fx:id="filter_samples" layoutX="323.0" layoutY="58.0" mnemonicParsing="false" text="Filter_samples" />
+                                    <CheckBox fx:id="taxa_collapse" layoutX="323.0" layoutY="85.0" mnemonicParsing="false" text="Taxa_collapse" />
+                                    <CheckBox fx:id="filter_features" layoutX="323.0" layoutY="117.0" mnemonicParsing="false" selected="true" text="Filter_features" />
+                                    <CheckBox fx:id="ancom" layoutX="323.0" layoutY="145.0" mnemonicParsing="false" selected="true" text="Ancom" />
+                                    <CheckBox fx:id="export_trimmed" layoutX="543.0" layoutY="35.0" mnemonicParsing="false" selected="true" text="Export_trimmed" />
+                                    <CheckBox fx:id="classify_samples_ncv" layoutX="323.0" layoutY="175.0" mnemonicParsing="false" text="Classify_samples_ncv" />
+                                    <CheckBox fx:id="picrust2_pipeline" layoutX="323.0" layoutY="206.0" mnemonicParsing="false" text="Picrust2_pipeline" />
+                                    <CheckBox fx:id="picrust2_import" layoutX="324.0" layoutY="235.0" mnemonicParsing="false" text="Picrust2_import" />
+                                    <CheckBox fx:id="export_table" layoutX="543.0" layoutY="64.0" mnemonicParsing="false" text="Export_table" />
+                                    <CheckBox fx:id="stats_depth" layoutX="543.0" layoutY="92.0" mnemonicParsing="false" text="Stats_depth" />
+                                    <CheckBox fx:id="lefse" layoutX="543.0" layoutY="173.0" mnemonicParsing="false" selected="true" text="Lefse" />
+                                    <CheckBox fx:id="variant_prema" layoutX="724.0" layoutY="54.0" mnemonicParsing="false" text="Variant_premap" visible="false" />
+                                    <CheckBox fx:id="variant_callvar" layoutX="725.0" layoutY="108.0" mnemonicParsing="false" text="Variant_callvar" visible="false" />
+                                    <CheckBox fx:id="humann2_merge" layoutX="543.0" layoutY="146.0" mnemonicParsing="false" text="Humann2_merge" />
+                                    <CheckBox fx:id="masslin2" layoutX="543.0" layoutY="199.0" mnemonicParsing="false" selected="true" text="Maaslin2" />
+                                    <CheckBox fx:id="variant_genref" layoutX="724.0" layoutY="80.0" mnemonicParsing="false" text="Variant_genrefs" visible="false" />
+                                    <CheckBox fx:id="humann2" layoutX="543.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleClickHumann2" text="Humann2" />
+                                    <CheckBox fx:id="variant_merge" layoutX="725.0" layoutY="161.0" mnemonicParsing="false" text="Variant_merge" visible="false" />
+                                    <CheckBox fx:id="variant_gentable" layoutX="725.0" layoutY="134.0" mnemonicParsing="false" text="Variant_gentable" visible="false" />
+                                    <Label fx:id="label51" layoutX="315.0" layoutY="144.0" text="          " visible="false" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+                  <RadioButton fx:id="resistome" layoutX="270.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleAppVariant" text="RESISTOME" />
+                  <RadioButton fx:id="microbiome" layoutX="579.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleAppVariant" text="MICROBIOME" />
+                  <Button layoutX="380.0" layoutY="828.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="205.0" text="DEMARRER" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
