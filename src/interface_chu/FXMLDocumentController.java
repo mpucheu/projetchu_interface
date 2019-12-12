@@ -80,7 +80,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML private Text para3;
     @FXML private Text para4;
     @FXML private Text para5;
-    @FXML private Text para6;
+    @FXML private Text frontforward;
+    @FXML private Text frontreverse;
     
     
     @FXML private TextField le1;
@@ -88,6 +89,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML private TextField le3;
     @FXML private TextField le4;
     @FXML private TextField le5;
+    @FXML private TextField frontforwardtxt;
+    @FXML private TextField frontreversetxt;
     
     @FXML private Label label1;
     @FXML private Label label2;
@@ -103,7 +106,8 @@ public class FXMLDocumentController implements Initializable {
     private String min_sampling_depth;
     private HashMap<String, HashMap<String, String>> listeModules;
     
-    
+    private int nbrR1=0;
+    private int nbrR2=0;
     
     
     /**
@@ -176,6 +180,9 @@ public class FXMLDocumentController implements Initializable {
                 List<File> files = fileChooser.showOpenMultipleDialog(stage);
                 System.out.println(files);
                 printLog(files);
+                if(nbrR1!=nbrR2){
+                    this.nomfichiers.setText("error");
+                }
               
             }
     
@@ -184,6 +191,11 @@ public class FXMLDocumentController implements Initializable {
         for (File file : files) {
             
             this.nomfichiers.setText(this.nomfichiers.getText()+file.getPath()+"\n");
+            if (file.getPath().contains("L001_R2")){
+                nbrR2 = nbrR2+1;
+            }else if (file.getPath().contains("L001_R1")){
+                nbrR1 = nbrR1+1;
+            }
         }   
     }
     
@@ -505,6 +517,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML 
     public void handleAppVariant(ActionEvent event) {
         if (resistome.isSelected()){
+            frontreverse.setVisible(true);
+            frontreversetxt.setVisible(true);
+            frontforward.setVisible(true);
+            frontforwardtxt.setVisible(true);
             variant_prema.setVisible(true);
             //variant_prema.setSelected(true);
             variant_callvar.setVisible(true);
@@ -547,6 +563,10 @@ public class FXMLDocumentController implements Initializable {
             //listeModules.clear();
             
         }else{
+            frontreverse.setVisible(false);
+            frontreversetxt.setVisible(false);
+            frontforward.setVisible(false);
+            frontforwardtxt.setVisible(false);
             variant_prema.setVisible(false);
             //variant_prema.setSelected(false);
             variant_callvar.setVisible(false);
@@ -683,7 +703,7 @@ public class FXMLDocumentController implements Initializable {
         monGroupe = new ToggleGroup();
         monGroupe.getToggles().add(resistome);
         monGroupe.getToggles().add(microbiome);
-        
+        resistome.setSelected(true);
         listeModules = new HashMap<>();
         // TODO
     }    
