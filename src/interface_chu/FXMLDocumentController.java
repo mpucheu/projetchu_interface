@@ -13,11 +13,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.DepthTest;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
@@ -37,14 +39,13 @@ public class FXMLDocumentController implements Initializable {
     private ToggleGroup monGroupe;
     @FXML private RadioButton microbiome, resistome;
     @FXML private Button fichier;
+    @FXML private Button classifier;
     @FXML private Button button1;
     @FXML private Button button2;
     @FXML private Button button3;
     @FXML private Button button4;
     @FXML private Button button5;
-    
-    @FXML private Label nomfichiers;
-    
+   
     @FXML private CheckBox variant_prema;
     @FXML private CheckBox variant_callvar;
     @FXML private CheckBox variant_merge;
@@ -92,13 +93,16 @@ public class FXMLDocumentController implements Initializable {
     @FXML private TextField frontforwardtxt;
     @FXML private TextField frontreversetxt;
     
+    @FXML private TextArea ctrl;
+    
     @FXML private Label label1;
     @FXML private Label label2;
     @FXML private Label label3;
     @FXML private Label label4;
     @FXML private Label label5;
-    
-    
+    @FXML private Label classif;
+    @FXML private Label nomfichiers;
+            
     @FXML private AnchorPane paneDetails;
     
     private String valueModule;
@@ -181,11 +185,15 @@ public class FXMLDocumentController implements Initializable {
                 System.out.println(files);
                 printLog(files);
                 if(nbrR1!=nbrR2){
-                    this.nomfichiers.setText("error");
+                    this.ctrl.setText("ERROR"); 
+                    this.ctrl.setStyle("-fx-font-weight: bold ;-fx-text-fill:red;-fx-background-color:#e81212;"); 
                 }
-              
+                if(nbrR1==nbrR2){
+                    this.ctrl.setText("OK");
+                    this.ctrl.setStyle("-fx-font-weight: bold ;-fx-text-fill:green; -fx-background-color:#38ee00;");
+                }
             }
-    
+     
     public void printLog( List<File> files) {
 
         for (File file : files) {
@@ -197,15 +205,32 @@ public class FXMLDocumentController implements Initializable {
                 nbrR1 = nbrR1+1;
             }
         }   
+        
+    }
+     /* Recuperation des fichiers classifier*/
+    @FXML
+    public void handleButtonAction2(ActionEvent event) {
+        //  nomfichiers.clear(); MARCHE PAS POUR UN TEXT
+                Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Select otus");
+                List<File> files = fileChooser.showOpenMultipleDialog(stage);
+                System.out.println(files);  
+                printLog2(files);
+                }
+     public void printLog2( List<File> files) {
+
+        for (File file : files) {
+            
+            this.classif.setText(this.classif.getText()+file.getPath()+"\n");
+
+        }    
     }
     
     @FXML
     public void handleBoutonDirectory(ActionEvent event) {
-
         DirectoryChooser directoryChooser = new DirectoryChooser(); 
-
-        directoryChooser.setTitle("Choix du dossier");
-
+        directoryChooser.setTitle("Select files");
         //Show open file dialog
 
         File file = directoryChooser.showDialog(null);

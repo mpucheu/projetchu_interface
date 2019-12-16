@@ -7,11 +7,12 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="925.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interface_chu.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="925.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interface_chu.FXMLDocumentController">
    <children>
       <ScrollPane prefHeight="925.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -23,7 +24,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="617.0" prefWidth="938.0">
                                  <children>
-		                    <Text layoutX="19.0" layoutY="190" strokeType="OUTSIDE" strokeWidth="0.0" text="OVERLAP" wrappingWidth="107.947265625" />
+		                    <Text layoutX="19.0" layoutY="190" strokeType="OUTSIDE" strokeWidth="0.0" text="Overlap" wrappingWidth="107.947265625" />
                                     <TextField layoutX="150.0" layoutY="174" prefHeight="25.0" prefWidth="551.0" text="18" />
                                     <Text layoutX="19.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Forward" wrappingWidth="107.947265625" />
                                     <Text layoutX="19.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Reverse" />
@@ -33,21 +34,26 @@
                                     <Text fx:id="frontreverse" layoutX="19.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front Reverse" />
                                     <TextField fx:id="frontforwardtxt" layoutX="150.0" layoutY="271.0" prefHeight="25.0" prefWidth="551.0" text="CAGCMGCCGCGGTAATWC" />
                                     <TextField fx:id="frontreversetxt" layoutX="150.0" layoutY="303.0" prefHeight="25.0" prefWidth="552.0" text="CTGAGCCAKGATCAAACTCT" />
-                                    <Text layoutX="19.0" layoutY="358" strokeType="OUTSIDE" strokeWidth="0.0" text="TRUNC Forward" wrappingWidth="107.947265625" />
-                                    <Text layoutX="19.0" layoutY="390" strokeType="OUTSIDE" strokeWidth="0.0" text="TRUNC Reverse" wrappingWidth="107.947265625" />
+                                    <Text layoutX="19.0" layoutY="358" strokeType="OUTSIDE" strokeWidth="0.0" text="Truncate Forward" wrappingWidth="107.947265625" />
+                                    <Text layoutX="19.0" layoutY="390" strokeType="OUTSIDE" strokeWidth="0.0" text="Truncate Reverse" wrappingWidth="107.947265625" />
                                     <TextField layoutX="150.0" layoutY="340.0" prefHeight="25.0" prefWidth="551.0" text="280" />
                                     <TextField layoutX="150.0" layoutY="370.0" prefHeight="25.0" prefWidth="552.0" text="280" />
-                                    <Text layoutX="19.0" layoutY="415" strokeType="OUTSIDE" strokeWidth="0.0" text="Homologie" wrappingWidth="107.947265625" />
+                                    <Text layoutX="19.0" layoutY="415" strokeType="OUTSIDE" strokeWidth="0.0" text="Percentage identify" wrappingWidth="107.947265625" />
                                     <TextField layoutX="150.0" layoutY="400" prefHeight="25.0" prefWidth="551.0" text="0.99" />
-                                    <Text layoutX="19.0" layoutY="445" strokeType="OUTSIDE" strokeWidth="0.0" text="Classifier" />
-                                    <TextField layoutX="150.0" layoutY="430" prefHeight="25.0" prefWidth="551.0" text="/ANALYSE/microbio/db/qiime2/silva132-99.fasta" />
-                                    <ScrollPane layoutX="150.0" layoutY="57.0" prefHeight="92.0" prefWidth="775.0" AnchorPane.bottomAnchor="497.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="57.0">
+                                   <ScrollPane layoutX="120.0" layoutY="446.0" prefHeight="44.0" prefWidth="773.0" AnchorPane.bottomAnchor="156.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="446.0">
+                                    <content>
+                                    <Label fx:id="classif" layoutX="135.0" layoutY="200.0" />   
+                                     </content>                                           
+                                    </ScrollPane>
+                                    <Button fx:id="classifier" layoutX="19.0" layoutY="445" mnemonicParsing="false" onAction="#handleButtonAction2" text="Classifier"  />
+                                    <ScrollPane layoutX="119.0" layoutY="57.0" prefHeight="92.0" prefWidth="775.0" AnchorPane.bottomAnchor="497.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="57.0">
                                       <content>
                                           <Text layoutX="38.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fichiers" />
                                           <Label fx:id="nomfichiers" layoutX="135.0" layoutY="55.0" />
                                       </content>
                                    </ScrollPane>
-                                    <Button fx:id="fichier" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Ajouter un fichier" />
+                                    <Button fx:id="fichier" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Select Files" />
+                                    <TextArea fx:id="ctrl" layoutX="13.0" layoutY="103.0" prefHeight="42.0" prefWidth="77.0" />
                                  </children>
                               </AnchorPane>
                            </content>
