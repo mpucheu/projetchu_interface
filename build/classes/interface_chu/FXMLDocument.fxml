@@ -7,44 +7,73 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="925.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interface_chu.FXMLDocumentController">
+<AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="925.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interface_chu.FXMLDocumentController">
    <children>
       <ScrollPane prefHeight="925.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
-            <AnchorPane prefHeight="924.0" prefWidth="938.0">
+            <AnchorPane prefHeight="924.0" prefWidth="938.0" style="-fx-background-color: #02f1fa;">
                <children>
                   <TabPane layoutX="1.0" layoutY="139.0" prefHeight="675.0" prefWidth="938.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">
                      <tabs>
                         <Tab text="Général">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="617.0" prefWidth="938.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="617.0" prefWidth="938.0" style="-fx-background-color: #d4fcfb;">
                                  <children>
+		                    <Text layoutX="19.0" layoutY="190" strokeType="OUTSIDE" strokeWidth="0.0" text="Overlap" wrappingWidth="107.947265625" />
+                                    <TextField layoutX="150.0" layoutY="174" prefHeight="25.0" prefWidth="551.0" text="18" />
                                     <Text layoutX="19.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Forward" wrappingWidth="107.947265625" />
                                     <Text layoutX="19.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Reverse" />
                                     <TextField layoutX="150.0" layoutY="206.0" prefHeight="25.0" prefWidth="551.0" text="CAGCMGCCGCGGTAATWC" />
                                     <TextField layoutX="150.0" layoutY="236.0" prefHeight="25.0" prefWidth="552.0" text="CTGAGCCAKGATCAAACTCT" />
-                                    <Text layoutX="19.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front Forward" wrappingWidth="107.947265625" />
-                                    <Text layoutX="19.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front Reverse" />
-                                    <TextField layoutX="150.0" layoutY="271.0" prefHeight="25.0" prefWidth="551.0" text="CAGCMGCCGCGGTAATWC" />
-                                    <TextField layoutX="150.0" layoutY="303.0" prefHeight="25.0" prefWidth="552.0" text="CTGAGCCAKGATCAAACTCT" />
-                                    <ScrollPane layoutX="150.0" layoutY="35.0" prefHeight="119.0" prefWidth="764.0" AnchorPane.bottomAnchor="461.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="35.0">
+                                    <Text fx:id="frontforward" layoutX="19.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front Forward" wrappingWidth="107.947265625" />
+                                    <Text fx:id="frontreverse" layoutX="19.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front Reverse" />
+                                    <TextField fx:id="frontforwardtxt" layoutX="150.0" layoutY="271.0" prefHeight="25.0" prefWidth="551.0" text="CAGCMGCCGCGGTAATWC" />
+                                    <TextField fx:id="frontreversetxt" layoutX="150.0" layoutY="303.0" prefHeight="25.0" prefWidth="552.0" text="CTGAGCCAKGATCAAACTCT" />
+                                    <Text layoutX="19.0" layoutY="358" strokeType="OUTSIDE" strokeWidth="0.0" text="Truncate Forward" wrappingWidth="107.947265625" />
+                                    <Text layoutX="19.0" layoutY="390" strokeType="OUTSIDE" strokeWidth="0.0" text="Truncate Reverse" wrappingWidth="107.947265625" />
+                                    <TextField layoutX="150.0" layoutY="340.0" prefHeight="25.0" prefWidth="551.0" text="280" />
+                                    <TextField layoutX="150.0" layoutY="370.0" prefHeight="25.0" prefWidth="552.0" text="280" />
+                                    <Text layoutX="19.0" layoutY="415" strokeType="OUTSIDE" strokeWidth="0.0" text="Percentage identify" wrappingWidth="107.947265625" />
+                                    <TextField layoutX="150.0" layoutY="400" prefHeight="25.0" prefWidth="551.0" text="0.99" />
+                                   <ScrollPane layoutX="136.0" layoutY="548.0" prefHeight="44.0" prefWidth="757.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="548.0">
+                                    <content>
+                                    <Label fx:id="classif" layoutX="135.0" layoutY="200.0" />   
+                                     </content>                                           
+                                    </ScrollPane>
+                                    <Button fx:id="classifier" layoutX="20.0" layoutY="557.0" mnemonicParsing="false" onAction="#handleButtonAction2" prefHeight="25.0" prefWidth="106.0" text="Classifier" />
+                                    <ScrollPane layoutX="119.0" layoutY="57.0" prefHeight="92.0" prefWidth="775.0" AnchorPane.bottomAnchor="497.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="57.0">
                                       <content>
                                           <Text layoutX="38.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fichiers" />
                                           <Label fx:id="nomfichiers" layoutX="135.0" layoutY="55.0" />
                                       </content>
                                    </ScrollPane>
-                                    <Button fx:id="fichier" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Ajouter un fichier" />
+                                    <Button fx:id="fichier" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Select Files" />
+                                    <TextArea fx:id="ctrl" layoutX="13.0" layoutY="103.0" prefHeight="42.0" prefWidth="77.0" />
+                                    <Button fx:id="meta" layoutX="20.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleButtonAction3" text="Patient metadata" />
+                                    <Button fx:id="resu" layoutX="21.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleButtonAction4" prefHeight="25.0" prefWidth="105.0" text="Result" />
+                                    <ScrollPane layoutX="136.0" layoutY="444.0" prefHeight="44.0" prefWidth="757.0">
+                                       <content>
+                                          <Label fx:id="fmeta" layoutX="135.0" layoutY="200.0" />
+                                       </content>
+                                    </ScrollPane>
+                                    <ScrollPane layoutX="136.0" layoutY="494.0" prefHeight="44.0" prefWidth="757.0">
+                                       <content>
+                                          <Label fx:id="fresu" layoutX="135.0" layoutY="200.0" />
+                                       </content>
+                                    </ScrollPane>
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
                         <Tab text="Modules">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="483.0" prefWidth="894.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="483.0" prefWidth="894.0" style="-fx-background-color: #d4fcfb;">
                                  <children>
                                     <CheckBox fx:id="rarefy" layoutX="45.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleClickRarefy" text="Rarefy" />
                                     <CheckBox fx:id="phylogeny_iqtre" layoutX="46.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleClickIQTree" text="Phylogeny_iqtre" />
@@ -107,9 +136,15 @@
                         </Tab>
                      </tabs>
                   </TabPane>
-                  <RadioButton fx:id="resistome" layoutX="270.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleAppVariant" text="RESISTOME" />
-                  <RadioButton fx:id="microbiome" layoutX="579.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleAppVariant" text="MICROBIOME" />
-                  <Button layoutX="380.0" layoutY="828.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="205.0" text="DEMARRER" />
+                  <RadioButton fx:id="resistome" layoutX="270.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleAppVariant" text="RESISTOME">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="microbiome" layoutX="579.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleAppVariant" text="MICROBIOME">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></RadioButton>
+                  <Button layoutX="448.0" layoutY="828.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="79.0" text="START" />
                </children>
             </AnchorPane>
          </content>

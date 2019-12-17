@@ -40,6 +40,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML private RadioButton microbiome, resistome;
     @FXML private Button fichier;
     @FXML private Button classifier;
+    @FXML private Button meta;
+    @FXML private Button resu;
     @FXML private Button button1;
     @FXML private Button button2;
     @FXML private Button button3;
@@ -102,7 +104,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML private Label label5;
     @FXML private Label classif;
     @FXML private Label nomfichiers;
-            
+    @FXML private Label fmeta; 
+    @FXML private Label fresu;
+    
     @FXML private AnchorPane paneDetails;
     
     private String valueModule;
@@ -204,8 +208,45 @@ public class FXMLDocumentController implements Initializable {
             }else if (file.getPath().contains("L001_R1")){
                 nbrR1 = nbrR1+1;
             }
-        }   
-        
+        }        
+    }
+    
+     /* Recuperation des METADATA patients*/
+        @FXML
+    public void handleButtonAction3(ActionEvent event) {
+        //  nomfichiers.clear(); MARCHE PAS POUR UN TEXT
+                Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Select patient data");
+                List<File> files = fileChooser.showOpenMultipleDialog(stage);
+                System.out.println(files);  
+                printdata(files);
+                }
+    
+     public void printdata( List<File> files) {
+
+        for (File file : files) {
+            
+            this.fmeta.setText(this.fmeta.getText()+file.getPath()+"\n");
+        }         
+    }
+     /* Recuperation des resultats*/
+             @FXML
+    public void handleButtonAction4(ActionEvent event) {
+        //  nomfichiers.clear(); MARCHE PAS POUR UN TEXT
+                Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Select result");
+                List<File> files = fileChooser.showOpenMultipleDialog(stage);
+                System.out.println(files);  
+                printresu(files);
+                }
+    public void printresu( List<File> files) {
+
+        for (File file : files) {
+            
+            this.fresu.setText(this.fresu.getText()+file.getPath()+"\n");
+        }       
     }
      /* Recuperation des fichiers classifier*/
     @FXML

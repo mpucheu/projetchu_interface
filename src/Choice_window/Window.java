@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interface_chu;
+package Choice_window;
 
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,11 +16,11 @@ import javafx.stage.Stage;
  *
  * @author Utilisateur
  */
-public class Interface_chu extends Application {
+public class Window extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Choice_window/FXMLwindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLwindow.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -36,3 +37,4 @@ public class Interface_chu extends Application {
     }
     
 }
+
