@@ -6,6 +6,7 @@
 package interface_chu;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,11 @@ import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonWriter;
+import interface_chu.Newjson.*;
+import static interface_chu.Newjson.createjson;
 /**
  *
  * @author Utilisateur
@@ -773,5 +778,12 @@ public class FXMLDocumentController implements Initializable {
         listeModules = new HashMap<>();
         // TODO
     }    
-    
+      /*
+    * fonction pour generer le JSON
+    */
+    @FXML 
+    public void go (ActionEvent event) throws Exception {
+        
+        createjson();
+}
 }
