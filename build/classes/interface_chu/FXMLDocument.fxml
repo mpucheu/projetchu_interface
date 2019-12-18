@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="925.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interface_chu.FXMLDocumentController">
+<AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="925.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interface_chu.FXMLDocumentController">
    <children>
       <ScrollPane prefHeight="925.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -26,28 +26,28 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="617.0" prefWidth="938.0" style="-fx-background-color: #d4fcfb;">
                                  <children>
 		                    <Text layoutX="19.0" layoutY="190" strokeType="OUTSIDE" strokeWidth="0.0" text="Overlap" wrappingWidth="107.947265625" />
-                                    <TextField layoutX="150.0" layoutY="174" prefHeight="25.0" prefWidth="551.0" text="18" />
+                                    <TextField layoutX="168.0" layoutY="174.0" prefHeight="25.0" prefWidth="551.0" text="18" />
                                     <Text layoutX="19.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Forward" wrappingWidth="107.947265625" />
                                     <Text layoutX="19.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Reverse" />
-                                    <TextField layoutX="150.0" layoutY="206.0" prefHeight="25.0" prefWidth="551.0" text="CAGCMGCCGCGGTAATWC" />
-                                    <TextField layoutX="150.0" layoutY="236.0" prefHeight="25.0" prefWidth="552.0" text="CTGAGCCAKGATCAAACTCT" />
+                                    <TextField layoutX="168.0" layoutY="206.0" prefHeight="25.0" prefWidth="551.0" text="CAGCMGCCGCGGTAATWC" />
+                                    <TextField layoutX="168.0" layoutY="236.0" prefHeight="25.0" prefWidth="552.0" text="CTGAGCCAKGATCAAACTCT" />
                                     <Text fx:id="frontforward" layoutX="19.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front Forward" wrappingWidth="107.947265625" />
                                     <Text fx:id="frontreverse" layoutX="19.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front Reverse" />
-                                    <TextField fx:id="frontforwardtxt" layoutX="150.0" layoutY="271.0" prefHeight="25.0" prefWidth="551.0" text="CAGCMGCCGCGGTAATWC" />
-                                    <TextField fx:id="frontreversetxt" layoutX="150.0" layoutY="303.0" prefHeight="25.0" prefWidth="552.0" text="CTGAGCCAKGATCAAACTCT" />
-                                    <Text layoutX="19.0" layoutY="358" strokeType="OUTSIDE" strokeWidth="0.0" text="Truncate Forward" wrappingWidth="107.947265625" />
-                                    <Text layoutX="19.0" layoutY="390" strokeType="OUTSIDE" strokeWidth="0.0" text="Truncate Reverse" wrappingWidth="107.947265625" />
-                                    <TextField layoutX="150.0" layoutY="340.0" prefHeight="25.0" prefWidth="551.0" text="280" />
-                                    <TextField layoutX="150.0" layoutY="370.0" prefHeight="25.0" prefWidth="552.0" text="280" />
-                                    <Text layoutX="19.0" layoutY="415" strokeType="OUTSIDE" strokeWidth="0.0" text="Percentage identify" wrappingWidth="107.947265625" />
-                                    <TextField layoutX="150.0" layoutY="400" prefHeight="25.0" prefWidth="551.0" text="0.99" />
-                                   <ScrollPane layoutX="136.0" layoutY="548.0" prefHeight="44.0" prefWidth="757.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="548.0">
+                                    <TextField fx:id="frontforwardtxt" layoutX="168.0" layoutY="271.0" prefHeight="25.0" prefWidth="551.0" text="CAGCMGCCGCGGTAATWC" />
+                                    <TextField fx:id="frontreversetxt" layoutX="168.0" layoutY="303.0" prefHeight="25.0" prefWidth="552.0" text="CTGAGCCAKGATCAAACTCT" />
+                                    <Text layoutX="19.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Truncate Forward" wrappingWidth="130.34725952148438" />
+                                    <Text layoutX="19.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Truncate Reverse" wrappingWidth="130.34725952148438" />
+                                    <TextField layoutX="168.0" layoutY="340.0" prefHeight="25.0" prefWidth="551.0" text="280" />
+                                    <TextField layoutX="168.0" layoutY="370.0" prefHeight="25.0" prefWidth="552.0" text="280" />
+                                    <Text layoutX="19.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Percentage identify" wrappingWidth="135.947265625" />
+                                    <TextField layoutX="168.0" layoutY="400.0" prefHeight="25.0" prefWidth="551.0" text="0.99" />
+                                   <ScrollPane layoutX="155.0" layoutY="548.0" prefHeight="44.0" prefWidth="757.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="548.0">
                                     <content>
                                     <Label fx:id="classif" layoutX="135.0" layoutY="200.0" />   
                                      </content>                                           
                                     </ScrollPane>
                                     <Button fx:id="classifier" layoutX="20.0" layoutY="557.0" mnemonicParsing="false" onAction="#handleButtonAction2" prefHeight="25.0" prefWidth="106.0" text="Classifier" />
-                                    <ScrollPane layoutX="119.0" layoutY="57.0" prefHeight="92.0" prefWidth="775.0" AnchorPane.bottomAnchor="497.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="57.0">
+                                    <ScrollPane layoutX="150.0" layoutY="57.0" prefHeight="92.0" prefWidth="767.0" AnchorPane.bottomAnchor="497.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="57.0">
                                       <content>
                                           <Text layoutX="38.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fichiers" />
                                           <Label fx:id="nomfichiers" layoutX="135.0" layoutY="55.0" />
@@ -57,12 +57,12 @@
                                     <TextArea fx:id="ctrl" layoutX="13.0" layoutY="103.0" prefHeight="42.0" prefWidth="77.0" />
                                     <Button fx:id="meta" layoutX="20.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleButtonAction3" text="Patient metadata" />
                                     <Button fx:id="resu" layoutX="21.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleButtonAction4" prefHeight="25.0" prefWidth="105.0" text="Result" />
-                                    <ScrollPane layoutX="136.0" layoutY="444.0" prefHeight="44.0" prefWidth="757.0">
+                                    <ScrollPane layoutX="155.0" layoutY="444.0" prefHeight="44.0" prefWidth="757.0">
                                        <content>
                                           <Label fx:id="fmeta" layoutX="135.0" layoutY="200.0" />
                                        </content>
                                     </ScrollPane>
-                                    <ScrollPane layoutX="136.0" layoutY="494.0" prefHeight="44.0" prefWidth="757.0">
+                                    <ScrollPane layoutX="155.0" layoutY="494.0" prefHeight="44.0" prefWidth="757.0">
                                        <content>
                                           <Label fx:id="fresu" layoutX="135.0" layoutY="200.0" />
                                        </content>
@@ -73,14 +73,14 @@
                         </Tab>
                         <Tab text="Modules">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="483.0" prefWidth="894.0" style="-fx-background-color: #d4fcfb;">
+                              <AnchorPane fx:id="bbwrap" minHeight="0.0" minWidth="0.0" prefHeight="483.0" prefWidth="894.0" style="-fx-background-color: #d4fcfb;">
                                  <children>
-                                    <CheckBox fx:id="rarefy" layoutX="45.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleClickRarefy" text="Rarefy" />
-                                    <CheckBox fx:id="phylogeny_iqtre" layoutX="46.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleClickIQTree" text="Phylogeny_iqtre" />
-                                    <CheckBox fx:id="diversity_alpha" layoutX="46.0" layoutY="78.0" mnemonicParsing="false" text="Diversity_alpha" />
-                                    <CheckBox fx:id="alpha_group_significance" layoutX="46.0" layoutY="108.0" mnemonicParsing="false" onAction="#handleClickAlphaGroup" text="Alpha_group_significance" />
-                                    <CheckBox fx:id="diversity_beta" layoutX="47.0" layoutY="137.0" mnemonicParsing="false" text="Diversity_beta" />
-                                    <CheckBox fx:id="beta_group_significance" layoutX="47.0" layoutY="168.0" mnemonicParsing="false" text="Beta_group_significance" />
+                                    <CheckBox fx:id="rarefy" layoutX="52.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleClickRarefy" />
+                                    <CheckBox fx:id="phylogeny_iqtre" layoutX="53.0" layoutY="86.0" mnemonicParsing="false" onAction="#handleClickIQTree" />
+                                    <CheckBox fx:id="diversity_alpha" layoutX="53.0" layoutY="114.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="alpha_group_significance" layoutX="53.0" layoutY="144.0" mnemonicParsing="false" onAction="#handleClickAlphaGroup" />
+                                    <CheckBox fx:id="diversity_beta" layoutX="54.0" layoutY="173.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="beta_group_significance" layoutX="54.0" layoutY="204.0" mnemonicParsing="false" />
                                     <AnchorPane fx:id="paneDetails" layoutX="52.0" layoutY="270.0" prefHeight="327.0" prefWidth="834.0" visible="false">
                                        <children>
                                           <Text fx:id="nomModule" layoutX="391.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODULE" />
@@ -107,29 +107,59 @@
                                           <Label fx:id="label4" layoutX="580.0" layoutY="159.0" text="          " visible="false" />
                                        </children>
                                     </AnchorPane>
-                                    <CheckBox fx:id="emperor_plot" layoutX="47.0" layoutY="198.0" mnemonicParsing="false" text="Emperor_plot" />
-                                    <CheckBox fx:id="alpha_rarefaction" layoutX="47.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleClickAlphaRarefaction" text="Alpha_rarefaction" />
-                                    <CheckBox fx:id="classify_sklearn" layoutX="323.0" layoutY="30.0" mnemonicParsing="false" text="Classify_sklearn" />
-                                    <CheckBox fx:id="filter_samples" layoutX="323.0" layoutY="58.0" mnemonicParsing="false" text="Filter_samples" />
-                                    <CheckBox fx:id="taxa_collapse" layoutX="323.0" layoutY="85.0" mnemonicParsing="false" text="Taxa_collapse" />
-                                    <CheckBox fx:id="filter_features" layoutX="323.0" layoutY="117.0" mnemonicParsing="false" selected="true" text="Filter_features" />
-                                    <CheckBox fx:id="ancom" layoutX="323.0" layoutY="145.0" mnemonicParsing="false" selected="true" text="Ancom" />
-                                    <CheckBox fx:id="export_trimmed" layoutX="543.0" layoutY="35.0" mnemonicParsing="false" selected="true" text="Export_trimmed" />
-                                    <CheckBox fx:id="classify_samples_ncv" layoutX="323.0" layoutY="175.0" mnemonicParsing="false" text="Classify_samples_ncv" />
-                                    <CheckBox fx:id="picrust2_pipeline" layoutX="323.0" layoutY="206.0" mnemonicParsing="false" text="Picrust2_pipeline" />
-                                    <CheckBox fx:id="picrust2_import" layoutX="324.0" layoutY="235.0" mnemonicParsing="false" text="Picrust2_import" />
-                                    <CheckBox fx:id="export_table" layoutX="543.0" layoutY="64.0" mnemonicParsing="false" text="Export_table" />
-                                    <CheckBox fx:id="stats_depth" layoutX="543.0" layoutY="92.0" mnemonicParsing="false" text="Stats_depth" />
-                                    <CheckBox fx:id="lefse" layoutX="543.0" layoutY="173.0" mnemonicParsing="false" selected="true" text="Lefse" />
-                                    <CheckBox fx:id="variant_prema" layoutX="724.0" layoutY="54.0" mnemonicParsing="false" text="Variant_premap" visible="false" />
-                                    <CheckBox fx:id="variant_callvar" layoutX="725.0" layoutY="108.0" mnemonicParsing="false" text="Variant_callvar" visible="false" />
-                                    <CheckBox fx:id="humann2_merge" layoutX="543.0" layoutY="146.0" mnemonicParsing="false" text="Humann2_merge" />
-                                    <CheckBox fx:id="masslin2" layoutX="543.0" layoutY="199.0" mnemonicParsing="false" selected="true" text="Maaslin2" />
-                                    <CheckBox fx:id="variant_genref" layoutX="724.0" layoutY="80.0" mnemonicParsing="false" text="Variant_genrefs" visible="false" />
-                                    <CheckBox fx:id="humann2" layoutX="543.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleClickHumann2" text="Humann2" />
-                                    <CheckBox fx:id="variant_merge" layoutX="725.0" layoutY="161.0" mnemonicParsing="false" text="Variant_merge" visible="false" />
-                                    <CheckBox fx:id="variant_gentable" layoutX="725.0" layoutY="134.0" mnemonicParsing="false" text="Variant_gentable" visible="false" />
+                                    <CheckBox fx:id="emperor_plot" layoutX="54.0" layoutY="234.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="alpha_rarefaction" layoutX="323.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleClickAlphaRarefaction" />
+                                    <CheckBox fx:id="classify_sklearn" layoutX="323.0" layoutY="51.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="filter_samples" layoutX="323.0" layoutY="79.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="taxa_collapse" layoutX="323.0" layoutY="106.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="filter_features" layoutX="323.0" layoutY="138.0" mnemonicParsing="false" selected="true" />
+                                    <CheckBox fx:id="ancom" layoutX="323.0" layoutY="166.0" mnemonicParsing="false" selected="true" />
+                                    <CheckBox fx:id="export_trimmed" layoutX="543.0" layoutY="66.0" mnemonicParsing="false" selected="true" />
+                                    <CheckBox fx:id="classify_samples_ncv" layoutX="323.0" layoutY="196.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="picrust2_pipeline" layoutX="323.0" layoutY="227.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="picrust2_import" layoutX="541.0" layoutY="39.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="export_table" layoutX="543.0" layoutY="95.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="stats_depth" layoutX="543.0" layoutY="123.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="lefse" layoutX="543.0" layoutY="204.0" mnemonicParsing="false" selected="true" />
+                                    <CheckBox fx:id="variant_prema" layoutX="724.0" layoutY="54.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="variant_callvar" layoutX="725.0" layoutY="108.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="humann2_merge" layoutX="543.0" layoutY="177.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="maaslin2" layoutX="543.0" layoutY="230.0" mnemonicParsing="false" selected="true" />
+                                    <CheckBox fx:id="variant_genref" layoutX="724.0" layoutY="80.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="humann2" layoutX="543.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleClickHumann2" />
+                                    <CheckBox fx:id="variant_merge" layoutX="725.0" layoutY="161.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="variant_gentable" layoutX="725.0" layoutY="134.0" mnemonicParsing="false" />
                                     <Label fx:id="label51" layoutX="315.0" layoutY="144.0" text="          " visible="false" />
+                                    <CheckBox fx:id="bwrap" layoutX="54.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleClickBBWrap" />
+                                    <Label fx:id="lbbwrap" layoutX="74.0" layoutY="34.0" onMouseClicked="#handleClickBBWrap" text="BBwrap" />
+                                    <Label fx:id="lrarefy" layoutX="75.0" layoutY="60.0" onMousePressed="#handleClickRarefy" text="Rarefy" />
+                                    <Label fx:id="lphylogeny_iqtre" layoutX="76.0" layoutY="86.0" onMouseClicked="#handleClickIQTree" text="Phylogeny_iqtre" />
+                                    <Label fx:id="ldiversity_alpha" layoutX="74.0" layoutY="114.0" text="Diversity_alpha" />
+                                    <Label fx:id="lalpha_group_significance" layoutX="75.0" layoutY="145.0" onMouseClicked="#handleClickAlphaGroup" text="Alpha_group_significance" />
+                                    <Label fx:id="ldiversity_beta" layoutX="76.0" layoutY="173.0" text="Diversity_beta" />
+                                    <Label fx:id="lbeta_group_significance" layoutX="76.0" layoutY="204.0" text="Beta_group_significance" />
+                                    <Label fx:id="lemperor_plot" layoutX="76.0" layoutY="234.0" text="Emperor_plot" />
+                                    <Label fx:id="lalpha_rarefaction" layoutX="346.0" layoutY="25.0" onMouseClicked="#handleClickAlphaRarefaction" text="Alpha_rarefaction" />
+                                    <Label fx:id="lclassify_sklearn" layoutX="346.0" layoutY="52.0" onMouseClicked="#handleClickClassifySKLearn" text="Classify_sklearn" />
+                                    <Label fx:id="lfilter_samples" layoutX="346.0" layoutY="80.0" text="Filter_samples" />
+                                    <Label fx:id="ltaxa_collapse" layoutX="347.0" layoutY="106.0" text="Taxa_collapse" />
+                                    <Label fx:id="lfilter_features" layoutX="346.0" layoutY="138.0" text="Filter_features" />
+                                    <Label fx:id="lancom" layoutX="347.0" layoutY="166.0" text="Ancom" />
+                                    <Label fx:id="lclassify_samples_ncv" layoutX="346.0" layoutY="196.0" text="Classify_samples_ncv" />
+                                    <Label fx:id="lpicrust2_pipeline" layoutX="347.0" layoutY="226.0" onMouseClicked="#handleClickPicrust2Pipeline" text="Picrust2_pipeline" />
+                                    <Label fx:id="lpicrust2_import" layoutX="564.0" layoutY="39.0" onMouseClicked="#handleClickPicrust2Import" text="Picrust2_import" />
+                                    <Label fx:id="lexport_trimmed" layoutX="565.0" layoutY="66.0" onMouseClicked="#handleClickExportTrimmed" text="Export_trimmed" />
+                                    <Label fx:id="lexport_table" layoutX="566.0" layoutY="95.0" onMouseClicked="#handleClickExportTable" text="Export_table" />
+                                    <Label fx:id="lstats_depth" layoutX="566.0" layoutY="123.0" onMouseClicked="#handleClickStatDepth" text="Stats_depth" />
+                                    <Label fx:id="lhumann2" layoutX="565.0" layoutY="150.0" onMouseClicked="#handleClickHumann2" text="Humann2" />
+                                    <Label fx:id="lhumann2_merge" layoutX="567.0" layoutY="177.0" text="Humann2_merge" />
+                                    <Label fx:id="llefse" layoutX="566.0" layoutY="204.0" text="Lefse" />
+                                    <Label fx:id="lmaaslin2" layoutX="567.0" layoutY="230.0" text="Maaslin2" />
+                                    <Label fx:id="lvariant_prema" layoutX="745.0" layoutY="53.0" text="Variant_premap" />
+                                    <Label fx:id="lvariant_genref" layoutX="746.0" layoutY="80.0" text="Variant_genrefs" />
+                                    <Label fx:id="lvariant_callvar" layoutX="748.0" layoutY="108.0" onMouseClicked="#handleClickVariantCallvar" text="Variant_callvar" />
+                                    <Label fx:id="lvariant_gentable" layoutX="747.0" layoutY="134.0" text="Variant_gentable" />
+                                    <Label fx:id="lvariant_merge" layoutX="747.0" layoutY="161.0" text="Variant_merge" />
                                  </children>
                               </AnchorPane>
                            </content>

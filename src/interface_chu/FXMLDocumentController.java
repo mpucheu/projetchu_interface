@@ -79,8 +79,39 @@ public class FXMLDocumentController implements Initializable {
     @FXML private CheckBox stats_depth;
     @FXML private CheckBox lefse;
     @FXML private CheckBox humann2_merge;
-    @FXML private CheckBox masslin2;
+    @FXML private CheckBox maaslin2;
     @FXML private CheckBox humann2;
+    @FXML private CheckBox bwrap;
+    
+    @FXML private Label lbbwrap;
+    @FXML private Label lvariant_prema;
+    @FXML private Label lvariant_callvar;
+    @FXML private Label lvariant_merge;
+    @FXML private Label lvariant_gentable;
+    @FXML private Label lvariant_genref;
+    @FXML private Label lrarefy;
+    @FXML private Label lphylogeny_iqtre;
+    @FXML private Label ldiversity_alpha;
+    @FXML private Label lalpha_group_significance;
+    @FXML private Label ldiversity_beta;
+    @FXML private Label lbeta_group_significance;
+    @FXML private Label lemperor_plot;
+    @FXML private Label lalpha_rarefaction;
+    @FXML private Label lclassify_sklearn;
+    @FXML private Label lfilter_samples;
+    @FXML private Label ltaxa_collapse;
+    @FXML private Label lfilter_features;
+    @FXML private Label lancom;
+    @FXML private Label lexport_trimmed;
+    @FXML private Label lclassify_samples_ncv;
+    @FXML private Label lpicrust2_pipeline;
+    @FXML private Label lpicrust2_import;
+    @FXML private Label lexport_table;
+    @FXML private Label lstats_depth;
+    @FXML private Label llefse;
+    @FXML private Label lhumann2_merge;
+    @FXML private Label lmaaslin2;
+    @FXML private Label lhumann2;
     
     @FXML private Text nomModule;
     @FXML private Text para1;
@@ -131,6 +162,7 @@ public class FXMLDocumentController implements Initializable {
         HashMap<String, String>innerMap = new HashMap<>();
         switch (valueModule){
             case "rarefy" :
+                
                 innerMap.put("to_do", "1");
                 String val = le5.getText();
                 innerMap.put("min_sampling_depth", val);
@@ -174,6 +206,12 @@ public class FXMLDocumentController implements Initializable {
                 innerMap.put("min_base_quality", le2.getText());
                 innerMap.put("min_depth", le3.getText());
                 listeModules.put("variant_callvar", innerMap);
+                break;
+                
+            case "bbwrap":
+                innerMap.put("to_do", "1");
+                innerMap.put("path", label5.getText());
+                listeModules.put("bbwrap", innerMap);
                 break;
                 
             default : 
@@ -304,7 +342,7 @@ public class FXMLDocumentController implements Initializable {
     * fonction qui affiche les parametres si on coche variant_callvar
     */
     @FXML
-    public void handleClickVariantCallvar(ActionEvent event){
+    public void handleClickVariantCallvar(){
         clearAfterFunction();
         if (variant_callvar.isSelected()){
             paneDetails.setVisible(true);
@@ -328,7 +366,10 @@ public class FXMLDocumentController implements Initializable {
             set3(false);
             set4(false);
             valueModule="";
-            listeModules.remove("variant_callvar");
+            if (listeModules.containsKey("variant_callvar")){
+                HashMap<String, String> innerMap = listeModules.get("variant_callvar");
+                innerMap.put("to_do", "0");
+            }
             le5.clear();
         }
     }
@@ -337,7 +378,7 @@ public class FXMLDocumentController implements Initializable {
     * fonction qui affiche les parametres si on coche classify_sklearn
     */
     @FXML
-    public void handleClickClassifySKLearn(ActionEvent event){
+    public void handleClickClassifySKLearn(){
         clearAfterFunction();
         if (classify_sklearn.isSelected()){
             paneDetails.setVisible(true);
@@ -352,7 +393,10 @@ public class FXMLDocumentController implements Initializable {
             paneDetails.setVisible(false);
             set5(false);
             valueModule="";
-            listeModules.remove("classify_sklearn");
+            if (listeModules.containsKey("classify_sklearn")){
+                HashMap<String, String> innerMap = listeModules.get("classify_sklearn");
+                innerMap.put("to_do", "0");
+            }
             le5.clear();
         }
     }
@@ -361,7 +405,7 @@ public class FXMLDocumentController implements Initializable {
     * fonction qui affiche les parametres si on coche alpha_rarefaction
     */
     @FXML
-    public void handleClickAlphaRarefaction(ActionEvent event){
+    public void handleClickAlphaRarefaction(){
         clearAfterFunction();
         if (alpha_rarefaction.isSelected()){
             paneDetails.setVisible(true);
@@ -376,7 +420,10 @@ public class FXMLDocumentController implements Initializable {
             paneDetails.setVisible(false);
             set5(false);
             valueModule="";
-            listeModules.remove("alpha_rarefaction");
+            if (listeModules.containsKey("alpha_rarefaction")){
+                HashMap<String, String> innerMap = listeModules.get("alpha_rarefaction");
+                innerMap.put("to_do", "0");
+            }
             le5.clear();
         }
     }
@@ -387,7 +434,7 @@ public class FXMLDocumentController implements Initializable {
     * fonction qui ajoute le stats_depth si coché
     */
     @FXML 
-    public void handleClickStatDepth (ActionEvent event){
+    public void handleClickStatDepth (){
         clearAfterFunction();
         paneDetails.setVisible(false);
         if (stats_depth.isSelected()){
@@ -395,7 +442,10 @@ public class FXMLDocumentController implements Initializable {
             innerMap.put("to_do", "1");
             listeModules.put("stats_depth", innerMap);
         }else{
-            listeModules.remove("stats_depth");
+            if (listeModules.containsKey("stats_depth")){
+                HashMap<String, String> innerMap = listeModules.get("stats_depth");
+                innerMap.put("to_do", "0");
+            }
         }
     }
     
@@ -403,7 +453,7 @@ public class FXMLDocumentController implements Initializable {
     * fonction qui ajoute le export_trimmed si coché
     */
     @FXML 
-    public void handleClickExportTable (ActionEvent event){
+    public void handleClickExportTable (){
         clearAfterFunction();
         paneDetails.setVisible(false);
         if (export_table.isSelected()){
@@ -411,7 +461,10 @@ public class FXMLDocumentController implements Initializable {
             innerMap.put("to_do", "1");
             listeModules.put("export_table", innerMap);
         }else{
-            listeModules.remove("export_table");
+            if (listeModules.containsKey("export_table")){
+                HashMap<String, String> innerMap = listeModules.get("export_table");
+                innerMap.put("to_do", "0");
+            }
         }
     }
     
@@ -419,7 +472,7 @@ public class FXMLDocumentController implements Initializable {
     * fonction qui ajoute le export_trimmed si coché
     */
     @FXML 
-    public void handleClickExportTrimmed (ActionEvent event){
+    public void handleClickExportTrimmed (){
         clearAfterFunction();
         paneDetails.setVisible(false);
         if (export_trimmed.isSelected()){
@@ -427,7 +480,10 @@ public class FXMLDocumentController implements Initializable {
             innerMap.put("to_do", "1");
             listeModules.put("export_trimmed", innerMap);
         }else{
-            listeModules.remove("export_trimmed");
+            if (listeModules.containsKey("export_trimmed")){
+                HashMap<String, String> innerMap = listeModules.get("export_trimmed");
+                innerMap.put("to_do", "0");
+            }
         }
     }
     
@@ -435,7 +491,7 @@ public class FXMLDocumentController implements Initializable {
     * fonction qui ajoute le picrust2_import si coché
     */
     @FXML 
-    public void handleClickPicrust2Import (ActionEvent event){
+    public void handleClickPicrust2Import (){
         clearAfterFunction();
         paneDetails.setVisible(false);
         if (picrust2_import.isSelected()){
@@ -443,7 +499,10 @@ public class FXMLDocumentController implements Initializable {
             innerMap.put("to_do", "1");
             listeModules.put("picrust2_import", innerMap);
         }else{
-            listeModules.remove("picrust2_import");
+            if (listeModules.containsKey("picrust2_import")){
+                HashMap<String, String> innerMap = listeModules.get("picrust2_import");
+                innerMap.put("to_do", "0");
+            }
         }
     }
     
@@ -451,7 +510,7 @@ public class FXMLDocumentController implements Initializable {
     * fonction qui ajoute le picrust2_pipeline si coché
     */
     @FXML 
-    public void handleClickPicrust2Pipeline (ActionEvent event){
+    public void handleClickPicrust2Pipeline (){
         clearAfterFunction();
         paneDetails.setVisible(false);
         if (picrust2_pipeline.isSelected()){
@@ -459,7 +518,10 @@ public class FXMLDocumentController implements Initializable {
             innerMap.put("to_do", "1");
             listeModules.put("picrust2_pipeline", innerMap);
         }else{
-            listeModules.remove("picrust2_pipeline");
+            if (listeModules.containsKey("picrust2_pipeline")){
+                HashMap<String, String> innerMap = listeModules.get("picrust2_pipeline");
+                innerMap.put("to_do", "0");
+            }
         }
     }
     
@@ -467,7 +529,7 @@ public class FXMLDocumentController implements Initializable {
     * fonction qui ajoute le alpha_group si coché
     */
     @FXML 
-    public void handleClickAlphaGroup (ActionEvent event){
+    public void handleClickAlphaGroup (){
         clearAfterFunction();
         paneDetails.setVisible(false);
         if (alpha_group_significance.isSelected()){
@@ -475,7 +537,10 @@ public class FXMLDocumentController implements Initializable {
             innerMap.put("to_do", "1");
             listeModules.put("alpha_group_significance", innerMap);
         }else{
-            listeModules.remove("alpha_group_significance");
+            if (listeModules.containsKey("alpha_group_significance")){
+                HashMap<String, String> innerMap = listeModules.get("alpha_group_significance");
+                innerMap.put("to_do", "0");
+            }
         }
     }
     
@@ -483,7 +548,7 @@ public class FXMLDocumentController implements Initializable {
     fonction clique sur humann2
     */
     @FXML 
-    public void handleClickHumann2(ActionEvent event){
+    public void handleClickHumann2(){
         clearAfterFunction();
         if (humann2.isSelected()){
             paneDetails.setVisible(true);
@@ -499,6 +564,9 @@ public class FXMLDocumentController implements Initializable {
                 le1.setText(listeModules.get("humann2").get("nucleotide_database"));
                 le2.setText(listeModules.get("humann2").get("protein_database"));
                 le5.setText(listeModules.get("humann2").get("pathways"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("humann2", innerMap);
             }
         }else{
             paneDetails.setVisible(false);
@@ -506,17 +574,53 @@ public class FXMLDocumentController implements Initializable {
             fich2(false);
             fich1(false);
             valueModule="";
-            listeModules.remove("humann2");
+            if (listeModules.containsKey("humann2")){
+                HashMap<String, String> innerMap = listeModules.get("humann2");
+                innerMap.put("to_do", "0");
+            }
             clearAll();
             
         }
     }
     
     /*
+    fonction clique sur bbwrap
+    */
+    @FXML 
+    public void handleClickBBWrap(){
+        clearAfterFunction();
+        
+        if (bwrap.isSelected()){
+            paneDetails.setVisible(true);
+            nomModule.setText("BBWRAP");
+            fich5(true);
+            para5.setText("path");
+            valueModule="bbwrap";
+            if (listeModules.containsKey("bbwrap")){
+                label5.setText(listeModules.get("bbwrap").get("path"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("bbwrap", innerMap);
+            }
+        }else{
+            paneDetails.setVisible(false);
+            fich5(false);
+            valueModule="";
+            if (listeModules.containsKey("bbwrap")){
+                HashMap<String, String> innerMap = listeModules.get("bbwrap");
+                innerMap.put("to_do", "0");
+            }
+            clearAll();
+            
+        }
+        System.out.println(listeModules);
+    }
+    
+    /*
     fonction clique sur phylogenic IQ tree
     */
     @FXML 
-    public void handleClickIQTree(ActionEvent event){
+    public void handleClickIQTree(){
         clearAfterFunction();
         if (phylogeny_iqtre.isSelected()){
             paneDetails.setVisible(true);
@@ -538,6 +642,9 @@ public class FXMLDocumentController implements Initializable {
                 le3.setText(listeModules.get("phylogeny_iqtree").get("perturb_nni_strength"));
                 le4.setText(listeModules.get("phylogeny_iqtree").get("n_cores"));
                 le5.setText(listeModules.get("phylogeny_iqtree").get("stop_iter"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("phylogeny_iqtree", innerMap);
             }
         }else{
             paneDetails.setVisible(false);
@@ -547,7 +654,10 @@ public class FXMLDocumentController implements Initializable {
             set2(false);
             set1(false);
             valueModule="";
-            listeModules.remove("phylogeny_iqtree");
+            if (listeModules.containsKey("phylogeny_iqtree")){
+                HashMap<String, String> innerMap = listeModules.get("phylogeny_iqtree");
+                innerMap.put("to_do", "0");
+            }
             clearAll();
             
         }
@@ -558,7 +668,7 @@ public class FXMLDocumentController implements Initializable {
      * gère le click sur checkbox rarefy
      */
     @FXML
-    public void handleClickRarefy(ActionEvent event){
+    public void handleClickRarefy(){
         clearAfterFunction();
         if (rarefy.isSelected()){
             paneDetails.setVisible(true);
@@ -568,12 +678,19 @@ public class FXMLDocumentController implements Initializable {
             valueModule="rarefy";
             if (listeModules.containsKey("rarefy")){
                 le5.setText(listeModules.get("rarefy").get("min_sampling_depth"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("rarefy", innerMap);
             }
         }else{
+            
             paneDetails.setVisible(false);
             set5(false);
             valueModule="";
-            listeModules.remove("rarefy");
+            if (listeModules.containsKey("rarefy")){
+                HashMap<String, String> innerMap = listeModules.get("rarefy");
+                innerMap.put("to_do", "0");
+            }
             le5.clear();
         }
         System.out.println(listeModules);
