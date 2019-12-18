@@ -17,7 +17,7 @@
    <children>
       <ScrollPane prefHeight="925.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
-            <AnchorPane prefHeight="924.0" prefWidth="938.0" style="-fx-background-color: #02f1fa;">
+            <AnchorPane prefHeight="924.0" prefWidth="938.0" style="-fx-background-color: #C3E3D0;">
                <children>
                   <TabPane layoutX="1.0" layoutY="139.0" prefHeight="675.0" prefWidth="938.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">
                      <tabs>
@@ -174,7 +174,7 @@
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></RadioButton>
-                  <Button layoutX="448.0" layoutY="828.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="79.0" text="START" />
+                  <Button layoutX="448.0" layoutY="828.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="79.0" onAction="#go" text="START" />
                </children>
             </AnchorPane>
          </content>

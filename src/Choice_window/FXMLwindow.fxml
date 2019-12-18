@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Choice_window.FXMLwindowController">
    <children>
-      <Button fx:id="newanalysis" layoutX="47.0" layoutY="188.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="144.0" text="NEW ANALYSIS">
+      <Button fx:id="newanalysis" layoutX="47.0" layoutY="188.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="144.0" onAction="#choix2" text="NEW ANALYSIS">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
