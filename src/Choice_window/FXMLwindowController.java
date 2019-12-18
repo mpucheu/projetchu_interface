@@ -37,11 +37,21 @@ public class FXMLwindowController implements Initializable {
         Stage stage= new Stage();
         stage.setScene(scene);
         stage.show();
-        System.out.println("ca marchera ou pas?");
         Stage stage2 = (Stage) replay.getScene().getWindow();
         stage2.close();
     }
 
+      public void choix2() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/interface_chu/FXMLDocument.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage= new Stage();
+        stage.setScene(scene);
+        stage.show();
+        Stage stage3 = (Stage) replay.getScene().getWindow();
+        stage3.close();
+        
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
