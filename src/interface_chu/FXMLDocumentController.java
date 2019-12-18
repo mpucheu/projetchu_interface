@@ -353,6 +353,9 @@ public class FXMLDocumentController implements Initializable {
                 le1.setText(listeModules.get("variant_callvar").get("min_mapping_quality"));
                 le2.setText(listeModules.get("variant_callvar").get("min_base_quality"));
                 le4.setText(listeModules.get("variant_callvar").get("min_depth"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("variant_callvar", innerMap);
             }
         }else{
             paneDetails.setVisible(false);
@@ -383,6 +386,9 @@ public class FXMLDocumentController implements Initializable {
             valueModule="classify_sklearn";
             if (listeModules.containsKey("classify_sklearn")){
                 le5.setText(listeModules.get("classify_sklearn").get("confidence"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("classify_sklearn", innerMap);
             }
         }else{
             paneDetails.setVisible(false);
@@ -410,6 +416,9 @@ public class FXMLDocumentController implements Initializable {
             valueModule="alpha_rarefaction";
             if (listeModules.containsKey("alpha_rarefaction")){
                 le5.setText(listeModules.get("alpha_rarefaction").get("max_depth"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("alpha_rarefaction", innerMap);
             }
         }else{
             paneDetails.setVisible(false);
