@@ -203,6 +203,12 @@ public class FXMLDocumentController implements Initializable {
                 listeModules.put("variant_callvar", innerMap);
                 break;
                 
+            case "bbwrap":
+                innerMap.put("to_do", "1");
+                innerMap.put("path", label5.getText());
+                listeModules.put("bbwrap", innerMap);
+                break;
+                
             default : 
                 break;
         }
@@ -553,6 +559,9 @@ public class FXMLDocumentController implements Initializable {
                 le1.setText(listeModules.get("humann2").get("nucleotide_database"));
                 le2.setText(listeModules.get("humann2").get("protein_database"));
                 le5.setText(listeModules.get("humann2").get("pathways"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("humann2", innerMap);
             }
         }else{
             paneDetails.setVisible(false);
@@ -567,6 +576,39 @@ public class FXMLDocumentController implements Initializable {
             clearAll();
             
         }
+    }
+    
+    /*
+    fonction clique sur bbwrap
+    */
+    @FXML 
+    public void handleClickBBWrap(){
+        clearAfterFunction();
+        
+        if (bwrap.isSelected()){
+            paneDetails.setVisible(true);
+            nomModule.setText("BBWRAP");
+            fich5(true);
+            para5.setText("path");
+            valueModule="bbwrap";
+            if (listeModules.containsKey("bbwrap")){
+                label5.setText(listeModules.get("bbwrap").get("path"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("bbwrap", innerMap);
+            }
+        }else{
+            paneDetails.setVisible(false);
+            fich5(false);
+            valueModule="";
+            if (listeModules.containsKey("bbwrap")){
+                HashMap<String, String> innerMap = listeModules.get("bbwrap");
+                innerMap.put("to_do", "0");
+            }
+            clearAll();
+            
+        }
+        System.out.println(listeModules);
     }
     
     /*
@@ -595,6 +637,9 @@ public class FXMLDocumentController implements Initializable {
                 le3.setText(listeModules.get("phylogeny_iqtree").get("perturb_nni_strength"));
                 le4.setText(listeModules.get("phylogeny_iqtree").get("n_cores"));
                 le5.setText(listeModules.get("phylogeny_iqtree").get("stop_iter"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("phylogeny_iqtree", innerMap);
             }
         }else{
             paneDetails.setVisible(false);
@@ -628,6 +673,9 @@ public class FXMLDocumentController implements Initializable {
             valueModule="rarefy";
             if (listeModules.containsKey("rarefy")){
                 le5.setText(listeModules.get("rarefy").get("min_sampling_depth"));
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("rarefy", innerMap);
             }
         }else{
             
