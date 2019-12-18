@@ -6,7 +6,6 @@
 package interface_chu;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +13,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.DepthTest;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -28,11 +26,10 @@ import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonWriter;
 import interface_chu.Newjson.*;
 import static interface_chu.Newjson.createjson;
+import java.util.ArrayList;
+import javafx.scene.control.ScrollPane;
 /**
  *
  * @author Utilisateur
@@ -112,6 +109,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML private Label lhumann2_merge;
     @FXML private Label lmaaslin2;
     @FXML private Label lhumann2;
+    @FXML private Label labelDico;
+    
     
     @FXML private Text nomModule;
     @FXML private Text para1;
@@ -144,11 +143,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML private Label fresu;
     
     @FXML private AnchorPane paneDetails;
+    @FXML private ScrollPane listeChoix;
     
     private String valueModule;
     
     private String min_sampling_depth;
     private HashMap<String, HashMap<String, String>> listeModules;
+    private HashMap<String, List<String>> listeModulesDico;
+    
     
     private int nbrR1=0;
     private int nbrR2=0;
@@ -160,6 +162,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void handleClickSave(ActionEvent event){
         HashMap<String, String>innerMap = new HashMap<>();
+        
         switch (valueModule){
             case "rarefy" :
                 
@@ -214,10 +217,16 @@ public class FXMLDocumentController implements Initializable {
                 listeModules.put("bbwrap", innerMap);
                 break;
                 
+            case "diversity_alpha":
+                innerMap.put("to_do", "1");
+                listeModules.put("diversity_alpha", innerMap);
+                break;
+                
             default : 
                 break;
         }
         System.out.println(listeModules);
+        System.out.println(listeModulesDico);
     }
     
     
@@ -273,6 +282,10 @@ public class FXMLDocumentController implements Initializable {
             this.fmeta.setText(this.fmeta.getText()+file.getPath()+"\n");
         }         
     }
+     
+    
+    
+     
      /* Recuperation des resultats*/
              @FXML
     public void handleButtonAction4(ActionEvent event) {
@@ -625,6 +638,61 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(listeModules);
     }
     
+     /*
+    fonction clique sur diversity alpha
+    */
+    @FXML 
+    public void handleClickDiversityAlpha(){
+        clearAfterFunction();
+        
+        if (diversity_alpha.isSelected()){
+            paneDetails.setVisible(true);
+            nomModule.setText("DIVERSITY ALPHA");
+            setDico(true);
+            para5.setText("metric");
+            valueModule="diversity_alpha";
+            if (listeModulesDico.containsKey("diversity_alpha")){
+                labelDico.setText(listeModulesDico.get("diversity_alpha").toString());
+                HashMap<String, String>innerMap = new HashMap<>();
+                innerMap.put("to_do", "1");
+                listeModules.put("diversity_alpha", innerMap);
+            }
+        }else{
+            paneDetails.setVisible(false);
+            setDico(false);
+            valueModule="";
+            if (listeModules.containsKey("diversity_alpha")){
+                HashMap<String, String> innerMap = listeModules.get("diversity_alpha");
+                innerMap.put("to_do", "0");
+            }
+            clearAll();
+            
+        }
+        System.out.println(listeModules);
+    }
+    
+    @FXML
+    public void pressEnterDico(){
+        List<String> maListe = new ArrayList <String>();
+        maListe.add(le5.getText());
+        printdataDico(maListe);
+        if (listeModulesDico.containsKey("diversity_alpha")){
+            List<String> maListe2 = new ArrayList <String>();
+            maListe2 = listeModulesDico.get("diversity_alpha");
+            maListe2.add(le5.getText());
+        }else{
+            listeModulesDico.put("diversity_alpha",maListe);
+        }
+    }
+    
+    public void printdataDico( List<String> listeMots) {
+
+        for (String str : listeMots) {
+            
+            this.labelDico.setText(this.labelDico.getText()+str+"\n");
+        }         
+    }
+    
     /*
     fonction clique sur phylogenic IQ tree
     */
@@ -882,6 +950,12 @@ public class FXMLDocumentController implements Initializable {
         label5.setVisible(val);
     }
     
+    public void setDico(Boolean val){
+        set5(val);
+        listeChoix.setVisible(val);
+        labelDico.setText("");
+    }
+    
     public void clearAll(){
         le5.clear();
         le1.clear();
@@ -893,6 +967,7 @@ public class FXMLDocumentController implements Initializable {
         label3.setText("");
         label4.setText("");
         label5.setText("");
+        setDico(false);
     }
     
     @Override
@@ -902,6 +977,8 @@ public class FXMLDocumentController implements Initializable {
         monGroupe.getToggles().add(microbiome);
         resistome.setSelected(true);
         listeModules = new HashMap<>();
+        listeModulesDico = new HashMap<>();
+        
         // TODO
     }    
       /*
