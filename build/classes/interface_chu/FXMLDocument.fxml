@@ -77,22 +77,22 @@
                                  <children>
                                     <CheckBox fx:id="rarefy" layoutX="52.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleClickRarefy" />
                                     <CheckBox fx:id="phylogeny_iqtre" layoutX="53.0" layoutY="86.0" mnemonicParsing="false" onAction="#handleClickIQTree" />
-                                    <CheckBox fx:id="diversity_alpha" layoutX="53.0" layoutY="114.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="diversity_alpha" layoutX="53.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleClickDiversityAlpha" />
                                     <CheckBox fx:id="alpha_group_significance" layoutX="53.0" layoutY="144.0" mnemonicParsing="false" onAction="#handleClickAlphaGroup" />
                                     <CheckBox fx:id="diversity_beta" layoutX="54.0" layoutY="173.0" mnemonicParsing="false" />
                                     <CheckBox fx:id="beta_group_significance" layoutX="54.0" layoutY="204.0" mnemonicParsing="false" />
-                                    <AnchorPane fx:id="paneDetails" layoutX="52.0" layoutY="270.0" prefHeight="327.0" prefWidth="834.0" visible="false">
+                                    <AnchorPane fx:id="paneDetails" layoutX="52.0" layoutY="270.0" prefHeight="327.0" prefWidth="834.0">
                                        <children>
-                                          <Text fx:id="nomModule" layoutX="391.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODULE" />
-                                          <Button fx:id="valid" layoutX="383.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleClickSave" text="VALIDER" />
+                                          <Text fx:id="nomModule" layoutX="391.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODULE" />
+                                          <Button fx:id="valid" layoutX="383.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleClickSave" text="VALIDER" />
                                           <TextField fx:id="le1" layoutX="37.0" layoutY="87.0" prefHeight="26.0" prefWidth="190.0" visible="false" />
                                           <TextField fx:id="le3" layoutX="37.0" layoutY="151.0" prefHeight="26.0" prefWidth="191.0" visible="false" />
-                                          <TextField fx:id="le5" layoutX="299.0" layoutY="123.0" prefHeight="26.0" prefWidth="232.0" visible="false" />
+                                          <TextField fx:id="le5" layoutX="299.0" layoutY="123.0" prefHeight="26.0" prefWidth="232.0" />
                                           <TextField fx:id="le2" layoutX="580.0" layoutY="87.0" prefHeight="26.0" prefWidth="232.0" visible="false" />
                                           <TextField fx:id="le4" layoutX="580.0" layoutY="151.0" prefHeight="26.0" prefWidth="236.0" visible="false" />
                                           <Text fx:id="para1" layoutX="37.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 1" visible="false" />
                                           <Text fx:id="para3" layoutX="33.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 3" visible="false" />
-                                          <Text fx:id="para5" layoutX="300.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 5" visible="false" />
+                                          <Text fx:id="para5" layoutX="300.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 5" />
                                           <Text fx:id="para2" layoutX="580.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 2" visible="false" />
                                           <Text fx:id="para4" layoutX="580.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parametre 4" visible="false" />
                                           <Button fx:id="button5" layoutX="392.0" layoutY="93.0" mnemonicParsing="false" onAction="#handleBoutonDirectory" text="Fichier" visible="false" />
@@ -105,6 +105,12 @@
                                           <Label fx:id="label3" layoutX="37.0" layoutY="158.0" text="          " visible="false" />
                                           <Label fx:id="label2" layoutX="583.0" layoutY="95.0" text="          " visible="false" />
                                           <Label fx:id="label4" layoutX="580.0" layoutY="159.0" text="          " visible="false" />
+                                          <ScrollPane fx:id="listeChoix" layoutX="298.0" layoutY="162.0" prefHeight="58.0" prefWidth="230.0">
+                                             <content>
+                                                <Label fx:id="labelDico" text="Label" />
+                                             </content>
+                                          </ScrollPane>
+                                          <Button layoutX="537.0" layoutY="122.0" mnemonicParsing="false" onAction="#pressEnterDico" text="Add" />
                                        </children>
                                     </AnchorPane>
                                     <CheckBox fx:id="emperor_plot" layoutX="54.0" layoutY="234.0" mnemonicParsing="false" />
@@ -134,7 +140,7 @@
                                     <Label fx:id="lbbwrap" layoutX="74.0" layoutY="34.0" onMouseClicked="#handleClickBBWrap" text="BBwrap" />
                                     <Label fx:id="lrarefy" layoutX="75.0" layoutY="60.0" onMousePressed="#handleClickRarefy" text="Rarefy" />
                                     <Label fx:id="lphylogeny_iqtre" layoutX="76.0" layoutY="86.0" onMouseClicked="#handleClickIQTree" text="Phylogeny_iqtre" />
-                                    <Label fx:id="ldiversity_alpha" layoutX="74.0" layoutY="114.0" text="Diversity_alpha" />
+                                    <Label fx:id="ldiversity_alpha" layoutX="74.0" layoutY="114.0" onMouseClicked="#handleClickDiversityAlpha" text="Diversity_alpha" />
                                     <Label fx:id="lalpha_group_significance" layoutX="75.0" layoutY="145.0" onMouseClicked="#handleClickAlphaGroup" text="Alpha_group_significance" />
                                     <Label fx:id="ldiversity_beta" layoutX="76.0" layoutY="173.0" text="Diversity_beta" />
                                     <Label fx:id="lbeta_group_significance" layoutX="76.0" layoutY="204.0" text="Beta_group_significance" />
@@ -174,7 +180,7 @@
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></RadioButton>
-                  <Button layoutX="448.0" layoutY="828.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="79.0" onAction="#go" text="START" />
+                  <Button layoutX="448.0" layoutY="828.0" mnemonicParsing="false" onAction="#go" prefHeight="68.0" prefWidth="79.0" text="START" />
                </children>
             </AnchorPane>
          </content>
