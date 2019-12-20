@@ -33,7 +33,6 @@ import javax.json.JsonArray;
 import javax.json.JsonWriter;
 import interface_chu.Newjson.*;
 import static interface_chu.Newjson.createjson;
-import static interface_chu.Newjson.enregistreHashMap;
 import java.util.ArrayList;
 /**
  *
@@ -936,25 +935,34 @@ public class FXMLDocumentController implements Initializable {
     public void go (ActionEvent event) throws Exception {
         // LISTE DES VALEURS POUR tools_import
         HashMap<String, Integer>innerMaptool_import = new HashMap<>();
-        innerMaptool_import.put("to_do", 1);
+        innerMaptool_import.put("todo", 1);
         // LISTE DES VALEURS POUR cutadapt_trim_paired
         HashMap<String, Object>innerMapcutadapt_trim_paired = new HashMap<>();
-          innerMapcutadapt_trim_paired.put("to_do", 1);
+          innerMapcutadapt_trim_paired.put("todo", 1);
           innerMapcutadapt_trim_paired.put("overlap",overlaptxt.getText());
              // recuperation en format listes pour les différentes amorces
-          List<String> primerforwardlist = new ArrayList<>();
+             List<String> primerforwardlist = new ArrayList<>();
              primerforwardlist.add(primerforwardtxt.getText());
              innerMapcutadapt_trim_paired.put("adapter_f",primerforwardlist);
-           
-          innerMapcutadapt_trim_paired.put("adapter_r",primerreversetxt.getText());
-          innerMapcutadapt_trim_paired.put("front_f",frontforwardtxt.getText());
-          innerMapcutadapt_trim_paired.put("front_r",frontreversetxt.getText());
+             
+             List<String> primerreverselist = new ArrayList<>();
+             primerreverselist.add(primerreversetxt.getText());
+             innerMapcutadapt_trim_paired.put("adapter_r",primerreverselist);
+             
+             List<String> frontforwardlist = new ArrayList<>();
+             frontforwardlist.add(frontforwardtxt.getText());
+             innerMapcutadapt_trim_paired.put("front_f",frontforwardlist);
+             
+             List<String> frontreverselist = new ArrayList<>();
+             frontreverselist.add(frontreversetxt.getText());
+             innerMapcutadapt_trim_paired.put("front_r",frontreverselist);
+             
         // LISTE DES VALEURS POUR demux_summarize
         HashMap<String, Integer>innerMapdemux_summarize = new HashMap<>();
-          innerMapdemux_summarize.put("to_do", 1);
+          innerMapdemux_summarize.put("todo", 1);
         // LISTE DES VALEURS POUR dada2_denoise_paired
-        HashMap<String, String>innerMapdada2_denoise_paired = new HashMap<>();
-          innerMapdada2_denoise_paired.put("to_do", "1");
+        HashMap<String, Object>innerMapdada2_denoise_paired = new HashMap<>();
+          innerMapdada2_denoise_paired.put("todo", "1");
           innerMapdada2_denoise_paired.put("max_ee", "2000"); 
           innerMapdada2_denoise_paired.put("trunc_q", "0");
           innerMapdada2_denoise_paired.put("trim_left_f", "0");
@@ -967,12 +975,12 @@ public class FXMLDocumentController implements Initializable {
          
             listeModules.put("cutadapt_trim_paired",innerMapcutadapt_trim_paired);
             listeModules.put("tools_import", innerMaptool_import);
-            listeModules.put("demux_summarize",innerMapcutadapt_trim_paired);
+            listeModules.put("demux_summarize",innerMapdemux_summarize);
             listeModules.put("dada2_denoise_paired",innerMapdada2_denoise_paired);
            
         
             
         createjson(listeModules);
-        //enregistreHashMap(listeModules, listPath);
+   
 }
 }

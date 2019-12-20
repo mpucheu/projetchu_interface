@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="interface_chu.jar" size="17643" download="eager" />
+    <jar href="interface_chu.jar" size="16841" download="eager" />
     <jar href="lib\gson-2.3-sources.jar" size="165015" download="eager" />
     <jar href="lib\gson-2.3.jar" size="255310" download="eager" />
     <jar href="lib\javax.json-1.1.4.jar" size="128770" download="eager" />

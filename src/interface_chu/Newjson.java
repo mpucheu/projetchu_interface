@@ -41,36 +41,6 @@ public class Newjson  {
             gson.toJson(liste, writer);
         }
        
-       
    }
-   public static void enregistreHashMap(HashMap<String, HashMap<String, String>> liste, String listePath) throws FileNotFoundException {
-      
-   
-      //System.out.println(liste);
-      JsonObjectBuilder builder = Json.createObjectBuilder();
-      builder.add("fastq",listePath);
-      for (Entry<String, HashMap<String, String>> entry : liste
-		        .entrySet()) {
-			JsonObjectBuilder childBuilder = Json
-			        .createObjectBuilder();
-			for (Entry<String, String> entryChild : entry
-			        .getValue().entrySet()) {
-				childBuilder.add(entryChild.getKey(),
-				        entryChild.getValue());
-			}
-			builder.add(entry.getKey(), childBuilder);
-		}
-		JsonObject doc = builder.build();
-
-                
-                
-		System.out.println("javaxjson2()");
-		System.out.println(doc.toString());
-                
-                JsonWriter writer = Json.createWriter(new FileOutputStream("coucou.json"));
-      writer.writeObject(doc);
-      writer.close();
   
-}
-   
 }
