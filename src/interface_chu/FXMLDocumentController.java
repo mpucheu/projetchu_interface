@@ -33,6 +33,8 @@ import javax.json.JsonArray;
 import javax.json.JsonWriter;
 import interface_chu.Newjson.*;
 import static interface_chu.Newjson.createjson;
+import static interface_chu.Newjson.enregistreHashMap;
+import java.util.ArrayList;
 /**
  *
  * @author Utilisateur
@@ -130,7 +132,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML private TextField le5;
     @FXML private TextField frontforwardtxt;
     @FXML private TextField frontreversetxt;
-    
+    @FXML private TextField primerforwardtxt;
+    @FXML private TextField primerreversetxt;
+    @FXML private TextField truncateforwardtxt;
+    @FXML private TextField truncatereversetxt;
+    @FXML private TextField overlaptxt;
+    @FXML private TextField percentagetxt;
     @FXML private TextArea ctrl;
     
     @FXML private Label label1;
@@ -148,7 +155,7 @@ public class FXMLDocumentController implements Initializable {
     private String valueModule;
     
     private String min_sampling_depth;
-    private HashMap<String, HashMap<String, String>> listeModules;
+    private HashMap<String, Object> listeModules;
     
     private int nbrR1=0;
     private int nbrR2=0;
@@ -224,13 +231,22 @@ public class FXMLDocumentController implements Initializable {
     
     /* Recuperation des fichiers fastQ*/
     public void handleButtonAction(ActionEvent event) {
-        //  nomfichiers.clear(); MARCHE PAS POUR UN TEXT
+   
                 Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("SELECTIONNER LES FICHIERS FASTQ");
                 List<File> files = fileChooser.showOpenMultipleDialog(stage);
-                System.out.println(files);
+                List<String> listPath= new ArrayList<>();
+                for (File file: files){
+                   listPath.add(file.getPath()) ;
+                }
+                
                 printLog(files);
+                listeModules.put("fastq", listPath);
+                listeModules.put("version",0.01);
+                listeModules.put("tmp","/ANALYSE/microbio/tmp/");
+                listeModules.put("core",24);
+               
                 if(nbrR1!=nbrR2){
                     this.ctrl.setText("ERROR"); 
                     this.ctrl.setStyle("-fx-font-weight: bold ;-fx-text-fill:red;-fx-background-color:#e81212;"); 
@@ -239,31 +255,38 @@ public class FXMLDocumentController implements Initializable {
                     this.ctrl.setText("OK");
                     this.ctrl.setStyle("-fx-font-weight: bold ;-fx-text-fill:green; -fx-background-color:#38ee00;");
                 }
+                    // Recuperation des fichiers fastQ
+                
             }
+    
      
     public void printLog( List<File> files) {
 
         for (File file : files) {
             
             this.nomfichiers.setText(this.nomfichiers.getText()+file.getPath()+"\n");
+            
             if (file.getPath().contains("L001_R2")){
                 nbrR2 = nbrR2+1;
             }else if (file.getPath().contains("L001_R1")){
                 nbrR1 = nbrR1+1;
             }
-        }        
+    }
     }
     
      /* Recuperation des METADATA patients*/
-        @FXML
+   @FXML
     public void handleButtonAction3(ActionEvent event) {
         //  nomfichiers.clear(); MARCHE PAS POUR UN TEXT
                 Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Select patient data");
-                List<File> files = fileChooser.showOpenMultipleDialog(stage);
-                System.out.println(files);  
-                printdata(files);
+                List<File> filesMeta = fileChooser.showOpenMultipleDialog(stage);
+                String metaPath = filesMeta.get(0).getPath();
+                
+                listeModules.put("metadata",metaPath);
+                System.out.println(metaPath);  
+                printdata(filesMeta);
                 }
     
      public void printdata( List<File> files) {
@@ -271,7 +294,8 @@ public class FXMLDocumentController implements Initializable {
         for (File file : files) {
             
             this.fmeta.setText(this.fmeta.getText()+file.getPath()+"\n");
-        }         
+        }   
+       
     }
      /* Recuperation des resultats*/
              @FXML
@@ -280,16 +304,21 @@ public class FXMLDocumentController implements Initializable {
                 Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Select result");
-                List<File> files = fileChooser.showOpenMultipleDialog(stage);
-                System.out.println(files);  
-                printresu(files);
+                List<File> filesResu = fileChooser.showOpenMultipleDialog(stage);
+                String metaResu = filesResu.get(0).getPath();
+                listeModules.put("result",metaResu);
+                System.out.println(filesResu);  
+                printresu(filesResu);
+                
+           
                 }
     public void printresu( List<File> files) {
 
         for (File file : files) {
             
             this.fresu.setText(this.fresu.getText()+file.getPath()+"\n");
-        }       
+        }     
+        
     }
      /* Recuperation des fichiers classifier*/
     @FXML
@@ -309,6 +338,9 @@ public class FXMLDocumentController implements Initializable {
             this.classif.setText(this.classif.getText()+file.getPath()+"\n");
 
         }    
+         HashMap<String, String>classifier = new HashMap<>();
+                classifier.put("classifier",classif.getText());
+                 listeModules.put("classifier",classifier);
     }
     
     @FXML
@@ -354,10 +386,10 @@ public class FXMLDocumentController implements Initializable {
             para4.setText("min_depth");
             valueModule="variant_callvar";
             if (listeModules.containsKey("variant_callvar")){
-                le3.setText(listeModules.get("variant_callvar").get("min_freq"));
-                le1.setText(listeModules.get("variant_callvar").get("min_mapping_quality"));
-                le2.setText(listeModules.get("variant_callvar").get("min_base_quality"));
-                le4.setText(listeModules.get("variant_callvar").get("min_depth"));
+                //le3.setText(listeModules.get("variant_callvar").get("min_freq"));
+               //  le1.setText(listeModules.get("variant_callvar").get("min_mapping_quality"));
+               // le2.setText(listeModules.get("variant_callvar").get("min_base_quality"));
+               // le4.setText(listeModules.get("variant_callvar").get("min_depth"));
             }
         }else{
             paneDetails.setVisible(false);
@@ -367,8 +399,8 @@ public class FXMLDocumentController implements Initializable {
             set4(false);
             valueModule="";
             if (listeModules.containsKey("variant_callvar")){
-                HashMap<String, String> innerMap = listeModules.get("variant_callvar");
-                innerMap.put("to_do", "0");
+               // HashMap<String, String> innerMap = listeModules.get("variant_callvar");
+               // innerMap.put("to_do", "0");
             }
             le5.clear();
         }
@@ -387,15 +419,15 @@ public class FXMLDocumentController implements Initializable {
             para5.setText("confidence");
             valueModule="classify_sklearn";
             if (listeModules.containsKey("classify_sklearn")){
-                le5.setText(listeModules.get("classify_sklearn").get("confidence"));
+             //   le5.setText(listeModules.get("classify_sklearn").get("confidence"));
             }
         }else{
             paneDetails.setVisible(false);
             set5(false);
             valueModule="";
             if (listeModules.containsKey("classify_sklearn")){
-                HashMap<String, String> innerMap = listeModules.get("classify_sklearn");
-                innerMap.put("to_do", "0");
+               // HashMap<String, String> innerMap = listeModules.get("classify_sklearn");
+               // innerMap.put("to_do", "0");
             }
             le5.clear();
         }
@@ -414,15 +446,15 @@ public class FXMLDocumentController implements Initializable {
             para5.setText("max_depth");
             valueModule="alpha_rarefaction";
             if (listeModules.containsKey("alpha_rarefaction")){
-                le5.setText(listeModules.get("alpha_rarefaction").get("max_depth"));
+            //    le5.setText(listeModules.get("alpha_rarefaction").get("max_depth"));
             }
         }else{
             paneDetails.setVisible(false);
             set5(false);
             valueModule="";
             if (listeModules.containsKey("alpha_rarefaction")){
-                HashMap<String, String> innerMap = listeModules.get("alpha_rarefaction");
-                innerMap.put("to_do", "0");
+               // HashMap<String, String> innerMap = listeModules.get("alpha_rarefaction");
+               // innerMap.put("to_do", "0");
             }
             le5.clear();
         }
@@ -443,8 +475,8 @@ public class FXMLDocumentController implements Initializable {
             listeModules.put("stats_depth", innerMap);
         }else{
             if (listeModules.containsKey("stats_depth")){
-                HashMap<String, String> innerMap = listeModules.get("stats_depth");
-                innerMap.put("to_do", "0");
+                //HashMap<String, String> innerMap = listeModules.get("stats_depth");
+              //  innerMap.put("to_do", "0");
             }
         }
     }
@@ -462,7 +494,7 @@ public class FXMLDocumentController implements Initializable {
             listeModules.put("export_table", innerMap);
         }else{
             if (listeModules.containsKey("export_table")){
-                HashMap<String, String> innerMap = listeModules.get("export_table");
+                HashMap<String, String> innerMap = (HashMap<String, String>) listeModules.get("export_table");
                 innerMap.put("to_do", "0");
             }
         }
@@ -481,7 +513,7 @@ public class FXMLDocumentController implements Initializable {
             listeModules.put("export_trimmed", innerMap);
         }else{
             if (listeModules.containsKey("export_trimmed")){
-                HashMap<String, String> innerMap = listeModules.get("export_trimmed");
+                HashMap<String, String> innerMap = (HashMap<String, String>) listeModules.get("export_trimmed");
                 innerMap.put("to_do", "0");
             }
         }
@@ -500,7 +532,7 @@ public class FXMLDocumentController implements Initializable {
             listeModules.put("picrust2_import", innerMap);
         }else{
             if (listeModules.containsKey("picrust2_import")){
-                HashMap<String, String> innerMap = listeModules.get("picrust2_import");
+                HashMap<String, String> innerMap = (HashMap<String, String>) listeModules.get("picrust2_import");
                 innerMap.put("to_do", "0");
             }
         }
@@ -519,7 +551,7 @@ public class FXMLDocumentController implements Initializable {
             listeModules.put("picrust2_pipeline", innerMap);
         }else{
             if (listeModules.containsKey("picrust2_pipeline")){
-                HashMap<String, String> innerMap = listeModules.get("picrust2_pipeline");
+                HashMap<String, String> innerMap = (HashMap<String, String>) listeModules.get("picrust2_pipeline");
                 innerMap.put("to_do", "0");
             }
         }
@@ -538,7 +570,7 @@ public class FXMLDocumentController implements Initializable {
             listeModules.put("alpha_group_significance", innerMap);
         }else{
             if (listeModules.containsKey("alpha_group_significance")){
-                HashMap<String, String> innerMap = listeModules.get("alpha_group_significance");
+                HashMap<String, String> innerMap = (HashMap<String, String>) listeModules.get("alpha_group_significance");
                 innerMap.put("to_do", "0");
             }
         }
@@ -561,9 +593,9 @@ public class FXMLDocumentController implements Initializable {
             para2.setText("protein_database");
             valueModule="humann2";
             if (listeModules.containsKey("humann2")){
-                le1.setText(listeModules.get("humann2").get("nucleotide_database"));
-                le2.setText(listeModules.get("humann2").get("protein_database"));
-                le5.setText(listeModules.get("humann2").get("pathways"));
+               // le1.setText(listeModules.get("humann2").get("nucleotide_database"));
+               // le2.setText(listeModules.get("humann2").get("protein_database"));
+               // le5.setText(listeModules.get("humann2").get("pathways"));
                 HashMap<String, String>innerMap = new HashMap<>();
                 innerMap.put("to_do", "1");
                 listeModules.put("humann2", innerMap);
@@ -575,7 +607,7 @@ public class FXMLDocumentController implements Initializable {
             fich1(false);
             valueModule="";
             if (listeModules.containsKey("humann2")){
-                HashMap<String, String> innerMap = listeModules.get("humann2");
+                HashMap<String, String> innerMap = (HashMap<String, String>) listeModules.get("humann2");
                 innerMap.put("to_do", "0");
             }
             clearAll();
@@ -597,7 +629,7 @@ public class FXMLDocumentController implements Initializable {
             para5.setText("path");
             valueModule="bbwrap";
             if (listeModules.containsKey("bbwrap")){
-                label5.setText(listeModules.get("bbwrap").get("path"));
+                //label5.setText(listeModules.get("bbwrap").get("path"));
                 HashMap<String, String>innerMap = new HashMap<>();
                 innerMap.put("to_do", "1");
                 listeModules.put("bbwrap", innerMap);
@@ -607,7 +639,7 @@ public class FXMLDocumentController implements Initializable {
             fich5(false);
             valueModule="";
             if (listeModules.containsKey("bbwrap")){
-                HashMap<String, String> innerMap = listeModules.get("bbwrap");
+                HashMap<String, String> innerMap = (HashMap<String, String>) listeModules.get("bbwrap");
                 innerMap.put("to_do", "0");
             }
             clearAll();
@@ -637,11 +669,11 @@ public class FXMLDocumentController implements Initializable {
             para4.setText("n_cores");
             valueModule="phylogeny_iqtree";
             if (listeModules.containsKey("phylogeny_iqtree")){
-                le1.setText(listeModules.get("phylogeny_iqtree").get("mode"));
-                le2.setText(listeModules.get("phylogeny_iqtree").get("bootstrap_replicates"));
-                le3.setText(listeModules.get("phylogeny_iqtree").get("perturb_nni_strength"));
-                le4.setText(listeModules.get("phylogeny_iqtree").get("n_cores"));
-                le5.setText(listeModules.get("phylogeny_iqtree").get("stop_iter"));
+              //  le1.setText(listeModules.get("phylogeny_iqtree").get("mode"));
+              //  le2.setText(listeModules.get("phylogeny_iqtree").get("bootstrap_replicates"));
+              //  le3.setText(listeModules.get("phylogeny_iqtree").get("perturb_nni_strength"));
+              //  le4.setText(listeModules.get("phylogeny_iqtree").get("n_cores"));
+              //  le5.setText(listeModules.get("phylogeny_iqtree").get("stop_iter"));
                 HashMap<String, String>innerMap = new HashMap<>();
                 innerMap.put("to_do", "1");
                 listeModules.put("phylogeny_iqtree", innerMap);
@@ -655,7 +687,7 @@ public class FXMLDocumentController implements Initializable {
             set1(false);
             valueModule="";
             if (listeModules.containsKey("phylogeny_iqtree")){
-                HashMap<String, String> innerMap = listeModules.get("phylogeny_iqtree");
+                HashMap<String, String> innerMap = (HashMap<String, String>) listeModules.get("phylogeny_iqtree");
                 innerMap.put("to_do", "0");
             }
             clearAll();
@@ -677,7 +709,7 @@ public class FXMLDocumentController implements Initializable {
             para5.setText("min_sampling_depth");
             valueModule="rarefy";
             if (listeModules.containsKey("rarefy")){
-                le5.setText(listeModules.get("rarefy").get("min_sampling_depth"));
+                //le5.setText(listeModules.get("rarefy").get("min_sampling_depth"));
                 HashMap<String, String>innerMap = new HashMap<>();
                 innerMap.put("to_do", "1");
                 listeModules.put("rarefy", innerMap);
@@ -688,8 +720,8 @@ public class FXMLDocumentController implements Initializable {
             set5(false);
             valueModule="";
             if (listeModules.containsKey("rarefy")){
-                HashMap<String, String> innerMap = listeModules.get("rarefy");
-                innerMap.put("to_do", "0");
+              //  HashMap<String, String> innerMap = listeModules.get("rarefy");
+              //  innerMap.put("to_do", "0");
             }
             le5.clear();
         }
@@ -894,13 +926,53 @@ public class FXMLDocumentController implements Initializable {
         resistome.setSelected(true);
         listeModules = new HashMap<>();
         // TODO
-    }    
+    } 
+    
+    
       /*
-    * fonction pour generer le JSON
+    * fonction pour generer le JSON et recuperer la liste des valeurs dans l'inglet général
     */
     @FXML 
     public void go (ActionEvent event) throws Exception {
+        // LISTE DES VALEURS POUR tools_import
+        HashMap<String, Integer>innerMaptool_import = new HashMap<>();
+        innerMaptool_import.put("to_do", 1);
+        // LISTE DES VALEURS POUR cutadapt_trim_paired
+        HashMap<String, Object>innerMapcutadapt_trim_paired = new HashMap<>();
+          innerMapcutadapt_trim_paired.put("to_do", 1);
+          innerMapcutadapt_trim_paired.put("overlap",overlaptxt.getText());
+             // recuperation en format listes pour les différentes amorces
+          List<String> primerforwardlist = new ArrayList<>();
+             primerforwardlist.add(primerforwardtxt.getText());
+             innerMapcutadapt_trim_paired.put("adapter_f",primerforwardlist);
+           
+          innerMapcutadapt_trim_paired.put("adapter_r",primerreversetxt.getText());
+          innerMapcutadapt_trim_paired.put("front_f",frontforwardtxt.getText());
+          innerMapcutadapt_trim_paired.put("front_r",frontreversetxt.getText());
+        // LISTE DES VALEURS POUR demux_summarize
+        HashMap<String, Integer>innerMapdemux_summarize = new HashMap<>();
+          innerMapdemux_summarize.put("to_do", 1);
+        // LISTE DES VALEURS POUR dada2_denoise_paired
+        HashMap<String, String>innerMapdada2_denoise_paired = new HashMap<>();
+          innerMapdada2_denoise_paired.put("to_do", "1");
+          innerMapdada2_denoise_paired.put("max_ee", "2000"); 
+          innerMapdada2_denoise_paired.put("trunc_q", "0");
+          innerMapdada2_denoise_paired.put("trim_left_f", "0");
+          innerMapdada2_denoise_paired.put("trim_left_r", "0");
+          innerMapdada2_denoise_paired.put("trunc_len_f",truncateforwardtxt.getText());
+          innerMapdada2_denoise_paired.put("trunc_len_r",truncatereversetxt.getText());
+          innerMapdada2_denoise_paired.put("perc_identity",percentagetxt.getText());
+    
+         
+         
+            listeModules.put("cutadapt_trim_paired",innerMapcutadapt_trim_paired);
+            listeModules.put("tools_import", innerMaptool_import);
+            listeModules.put("demux_summarize",innerMapcutadapt_trim_paired);
+            listeModules.put("dada2_denoise_paired",innerMapdada2_denoise_paired);
+           
         
-        createjson();
+            
+        createjson(listeModules);
+        //enregistreHashMap(listeModules, listPath);
 }
 }
