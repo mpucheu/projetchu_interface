@@ -24,15 +24,18 @@
     (Targets beginning with '-' are not intended to be called on their own.)
 
     Example of inserting a HTML postprocessor after javaFX SDK deployment:
-
+ -->
         <target name="-post-jfx-deploy">
-            <basename property="jfx.deployment.base" file="${jfx.deployment.jar}" suffix=".jar"/>
-            <property name="jfx.deployment.html" location="${jfx.deployment.dir}${file.separator}${jfx.deployment.base}.html"/>
-            <custompostprocess>
-                <fileset dir="${jfx.deployment.html}"/>
-            </custompostprocess>
-        </target>
+            <jar jarfile="dist/INTERFACE.jar">
+    <zipfileset src="dist/lib/gson-2.3.jar" excludes="META-INF/*" />
+    <zipfileset src="dist/lib/gson-2.3-sources.jar" excludes="META-INF/*" />
 
+    <manifest>
+        <attribute name="Main-Class" value="interface_chu.Interface_chu.java"/>
+    </manifest>
+         </jar>
+        </target>
+<!--
     Example of calling an Ant task from JavaFX SDK. Note that access to JavaFX SDK Ant tasks must be
     initialized; to ensure this is done add the dependence on -check-jfx-sdk-version target:
 

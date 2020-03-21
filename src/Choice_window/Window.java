@@ -14,13 +14,16 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Utilisateur
+ * MARLIAT Julien
  */
 public class Window extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLwindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLwindow.fxml"));
+        Parent root = loader.load();
+        FXMLwindowController controller = loader.getController();
+        controller.setStage(stage);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);

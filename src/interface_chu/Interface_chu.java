@@ -13,7 +13,8 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Utilisateur
+ * PUCHEU Marion
+ * MARLIAT Julien
  */
 public class Interface_chu extends Application {
     
